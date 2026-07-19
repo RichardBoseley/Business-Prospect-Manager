@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/smallteam-ai-design-system-ea116a0d-59a9-4158-9eb1-ad90fac80764/colors_and_type_light.css">
+<script src="_ds/smallteam-ai-design-system-ea116a0d-59a9-4158-9eb1-ad90fac80764/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:#F4F6FA;font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0A1628;-webkit-font-smoothing:antialiased}
+a{color:#00a891;text-decoration:none}a:hover{color:#0A1628}
+@keyframes go-spin{to{transform:rotate(360deg)}}
+@keyframes go-slidein{from{transform:translateX(40px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes go-fadeup{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
+input[type=range]{accent-color:#00C2A8}
+</style>
+</helmet>
+<div style="display:flex;min-height:100vh">
+<aside style="position:fixed;top:0;left:0;bottom:0;width:224px;background:#fff;border-right:1.5px solid #E8ECF0;display:flex;flex-direction:column;padding:18px 12px 16px;z-index:5">
+  <div style="display:flex;align-items:center;gap:9px;padding:2px 10px 16px">
+    <img src="assets/smallteam-robologo.png" alt="smallteam.ai" style="height:30px;width:auto;flex:none">
+    <span style="display:flex;flex-direction:column;line-height:1.2">
+      <span style="font-size:15px;font-weight:800;letter-spacing:-0.02em">outreach</span>
+      <span style="font-size:10.5px;color:#6C757D">by <span style="font-weight:700;color:#0A1628">smallteam<span style="color:#00C2A8;font-weight:800">.ai</span></span></span>
+    </span>
+  </div>
+  <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:#9AA5B1;padding:0 10px 6px;cursor:default">Overview</span>
+  <span onClick="{{ nav.dash.go }}" style="{{ nav.dash.css }}" style-hover="background:#F4F6FA">Dashboard<span style="margin-left:auto;font-size:11px;font-weight:700;color:#9A5B00;background:rgba(255,170,0,0.12);border-radius:100px;padding:1px 8px">4</span></span>
+  <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:#9AA5B1;border-top:1px solid #F4F6FA;margin-top:12px;padding:12px 10px 6px;cursor:default">Campaigns</span>
+  <span onClick="{{ nav.promos.go }}" style="{{ nav.promos.css }}" style-hover="background:#F4F6FA">Promotions</span>
+  <span onClick="{{ nav.find.go }}" style="{{ nav.find.css }}" style-hover="background:#F4F6FA">Find businesses</span>
+  <span onClick="{{ nav.short.go }}" style="{{ nav.short.css }}" style-hover="background:#F4F6FA">Shortlist</span>
+  <span onClick="{{ nav.copy.go }}" style="{{ nav.copy.css }}" style-hover="background:#F4F6FA">Campaign copy</span>
+  <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:#9AA5B1;border-top:1px solid #F4F6FA;margin-top:12px;padding:12px 10px 6px;cursor:default">CRM</span>
+  <span onClick="{{ nav.pipe.go }}" style="{{ nav.pipe.css }}" style-hover="background:#F4F6FA">Pipeline</span>
+  <span onClick="{{ nav.dnc.go }}" style="{{ nav.dnc.css }}" style-hover="background:#F4F6FA">Do not contact</span>
+  <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:#9AA5B1;border-top:1px solid #F4F6FA;margin-top:12px;padding:12px 10px 6px;cursor:default">Workspace</span>
+  <span onClick="{{ nav.settings.go }}" style="{{ nav.settings.css }}" style-hover="background:#F4F6FA">Settings</span>
+  <div style="margin-top:auto;display:flex;flex-direction:column;padding:0 10px">
+    <div style="border-top:1px solid #E8ECF0;padding-top:12px;display:flex;flex-direction:column;gap:3px">
+      <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:#9AA5B1">Workspace</span>
+      <span style="font-size:12px;font-weight:600">Game On Entertainment Centre</span>
+      <span style="font-size:11px;color:#6C757D">Cranbourne West VIC · 2 venues</span>
+    </div>
+  </div>
+</aside>
+<main style="flex:1;margin-left:224px;min-width:0">
+
+<sc-if value="{{ is.dashboard }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Dashboard" style="max-width:1120px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:24px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Dashboard</h1>
+      <span style="font-size:13px;color:#6C757D">Friday 18 July · 4 leads need action today</span>
+    </div>
+    <button onClick="{{ nav.promos.go }}" style="font-family:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28);transition:background 200ms cubic-bezier(0.4,0,0.2,1),transform 200ms cubic-bezier(0.4,0,0.2,1)" style-hover="background:#00a891;transform:translateY(-1px)">New promotion</button>
+  </div>
+  <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:14px">
+    <div onClick="{{ goSent }}" style="background:#fff;border:1px solid #E8ECF0;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);cursor:pointer;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.45)">
+      <span style="font-size:12px;font-weight:500;color:#6C757D">Emails sent this week</span>
+      <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1">118</span>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div style="height:6px;border-radius:100px;background:#F4F6FA;border:1px solid #E8ECF0;overflow:hidden"><div style="{{ limitBarCss }}"></div></div>
+        <span style="font-size:11.5px;color:#6C757D">{{ limitLabel }}</span>
+      </div>
+    </div>
+    <div onClick="{{ goOpened }}" style="background:#fff;border:1px solid #E8ECF0;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);cursor:pointer;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.45)">
+      <span style="font-size:12px;font-weight:500;color:#6C757D">Opens</span>
+      <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1">74</span>
+      <span style="font-size:11.5px;color:#6C757D">63% — indicative only</span>
+    </div>
+    <div onClick="{{ goClicked }}" style="background:#fff;border:1px solid #E8ECF0;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);cursor:pointer;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.45)">
+      <span style="font-size:12px;font-weight:500;color:#6C757D">Clicks</span>
+      <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1">22</span>
+      <span style="font-size:11.5px;color:#6C757D">19% of sent</span>
+    </div>
+    <div onClick="{{ goReplied }}" style="background:#fff;border:1px solid #E8ECF0;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);cursor:pointer;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.45)">
+      <span style="font-size:12px;font-weight:500;color:#6C757D">Replies</span>
+      <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1">9</span>
+      <span style="font-size:11.5px;color:#6C757D">3 this week</span>
+    </div>
+    <div onClick="{{ goWarm }}" style="background:#fff;border:1.5px solid rgba(0,194,168,0.35);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 12px rgba(0,194,168,0.07);cursor:pointer;transition:box-shadow 150ms" style-hover="box-shadow:0 4px 20px rgba(0,194,168,0.16)">
+      <span style="font-size:12px;font-weight:600;color:#00775f">New warm leads</span>
+      <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1;color:#00775f">4</span>
+      <span style="font-size:11.5px;color:#6C757D">clicked or replied</span>
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);overflow:hidden">
+    <div style="display:flex;align-items:baseline;gap:10px;padding:18px 24px 14px">
+      <h2 style="margin:0;font-size:17px;font-weight:600;letter-spacing:-0.02em">Follow-up queue</h2>
+      <span style="font-size:12px;color:#6C757D">replied or clicked and not yet actioned, plus reminders due</span>
+    </div>
+    <div style="display:grid;grid-template-columns:2.2fr 1fr 1.3fr 1fr 84px;gap:12px;padding:8px 24px;border-top:1px solid #E8ECF0;border-bottom:1px solid #E8ECF0;background:#F9FAFC">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Business</span>
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Suburb</span>
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Last activity</span>
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Stage</span>
+      <span></span>
+    </div>
+    <sc-for list="{{ queueRows }}" as="r" hint-placeholder-count="4">
+      <div onClick="{{ r.open }}" style="display:grid;grid-template-columns:2.2fr 1fr 1.3fr 1fr 84px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F4F6FA;cursor:pointer" style-hover="background:#F9FAFC">
+        <span style="display:flex;flex-direction:column;gap:1px;min-width:0">
+          <span style="font-size:14px;font-weight:600">{{ r.name }}</span>
+          <span style="font-size:12px;color:#6C757D">{{ r.type }}</span>
+        </span>
+        <span style="font-size:13px;color:#6C757D">{{ r.suburb }}</span>
+        <span style="min-width:0">
+          <sc-if value="{{ r.hasRem }}" hint-placeholder-val="{{ false }}"><span style="{{ r.remCss }}"><svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#9A5B00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2a3.6 3.6 0 0 1 3.6 3.6c0 2.7 1 3.4 1 3.4H2.4s1-.7 1-3.4A3.6 3.6 0 0 1 7 2Z"></path><path d="M5.8 11.2a1.3 1.3 0 0 0 2.4 0"></path></svg>{{ r.last }}</span></sc-if>
+          <sc-if value="{{ r.noRem }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px;font-weight:500">{{ r.last }}</span></sc-if>
+        </span>
+        <span><span style="{{ r.stageCss }}"><span style="{{ r.dotCss }}"></span>{{ r.stageLabel }}</span></span>
+        <button onClick="{{ r.open }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.5)">View</button>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is.promotions }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Promotions" style="max-width:1120px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:24px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Promotions</h1>
+      <span style="font-size:13px;color:#6C757D">Every campaign starts from an offer worth talking about</span>
+    </div>
+    <button onClick="{{ openWizard }}" style="font-family:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28);transition:background 200ms,transform 200ms" style-hover="background:#00a891;transform:translateY(-1px)">New promotion</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">
+    <sc-for list="{{ promoCards }}" as="p" hint-placeholder-count="3">
+      <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);transition:box-shadow 200ms,transform 200ms" style-hover="box-shadow:0 4px 20px rgba(0,194,168,0.07);transform:translateY(-2px)">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+          <h3 style="margin:0;font-size:16px;font-weight:600;letter-spacing:-0.01em;line-height:1.3">{{ p.name }}</h3>
+          <span style="display:inline-flex;align-items:center;gap:10px;flex:none">
+            <span style="{{ p.chipCss }}"><span style="{{ p.dotCss }}"></span>{{ p.status }}</span>
+            <span onClick="{{ p.edit }}" title="Edit promotion" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;border:1.5px solid #E8ECF0;background:#fff;cursor:pointer;color:#6C757D;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.5);color:#0A1628"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 2 2.5 2.5-6.5 6.5-3 .5.5-3Z"></path></svg></span>
+          </span>
+        </div>
+        <p style="margin:0;font-size:13px;color:#6C757D;line-height:1.55">{{ p.desc }}</p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;border-top:1px solid #F4F6FA;padding-top:14px">
+          <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:16px;font-weight:700;letter-spacing:-0.01em">{{ p.targets }}</span><span style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:#6C757D">Targets</span></span>
+          <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:16px;font-weight:700;letter-spacing:-0.01em">{{ p.sent }}</span><span style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:#6C757D">Sent</span></span>
+          <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:16px;font-weight:700;letter-spacing:-0.01em">{{ p.opened }}</span><span style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:#6C757D">Opened</span></span>
+          <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:16px;font-weight:700;letter-spacing:-0.01em">{{ p.clicked }}</span><span style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:#6C757D">Clicked</span></span>
+          <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:#00775f">{{ p.replied }}</span><span style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:#6C757D">Replied</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <span onClick="{{ p.find }}" style="font-size:13px;font-weight:600;color:#00a891;cursor:pointer" style-hover="color:#0A1628">Find businesses →</span>
+          <sc-if value="{{ p.isDraft }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ p.publish }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;margin-left:auto" style-hover="background:#00a891">Publish</button>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ is.find }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Find businesses" style="max-width:920px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:20px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Find businesses</h1>
+    <span style="font-size:13px;color:#6C757D">Build a search for local businesses that match this promotion</span>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04)">
+    <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#00a891;flex:none">Promotion</span>
+    <select value="{{ promoVal }}" onChange="{{ setPromo }}" style="font-family:inherit;font-size:14px;font-weight:600;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;background:#fff;color:#0A1628;outline:none;flex:1;max-width:380px">
+      <sc-for list="{{ promoOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+    </select>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);display:flex;flex-direction:column">
+    <div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #F4F6FA">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+        <span style="font-size:14px;font-weight:600">Location</span>
+        <div style="display:inline-flex;background:#F4F6FA;border:1px solid #E8ECF0;border-radius:100px;padding:3px">
+          <button onClick="{{ setLocDist }}" style="{{ locDistCss }}">Distance from venue</button>
+          <button onClick="{{ setLocArea }}" style="{{ locAreaCss }}">Named areas</button>
+        </div>
+      </div>
+      <sc-if value="{{ isDist }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <select value="{{ venueVal }}" onChange="{{ setVenue }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 11px;border:1.5px solid #E8ECF0;border-radius:6px;background:#fff;color:#0A1628;outline:none">
+            <sc-for list="{{ venueOpts }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+          </select>
+          <span style="font-size:12px;color:#6C757D">defaults to your primary venue · <span onClick="{{ nav.settings.go }}" style="font-weight:600;color:#00a891;cursor:pointer" style-hover="color:#0A1628">manage venues in Settings</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding-top:2px">
+          <input type="range" min="5" max="40" step="5" value="{{ dist }}" onChange="{{ setDist }}" onInput="{{ setDist }}" style="flex:1">
+          <span style="font-size:13.5px;font-weight:600;min-width:98px;text-align:right;color:#00775f">Within {{ distLabel }}</span>
+        </div>
+        <span style="font-size:12px;color:#6C757D">From {{ venueLine }}</span>
+      </sc-if>
+      <sc-if value="{{ isAreas }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ areaChips }}" as="c" hint-placeholder-count="8"><button onClick="{{ c.toggle }}" style="{{ c.css }}">{{ c.label }}</button></sc-for>
+        </div>
+        <div style="display:flex;gap:8px;max-width:340px">
+          <input value="{{ areaInput }}" onChange="{{ setAreaInput }}" onInput="{{ setAreaInput }}" onKeyDown="{{ areaKey }}" placeholder="Add another area…" style="font-family:inherit;font-size:13px;padding:7px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;flex:1;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+          <button onClick="{{ addArea }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:7px 14px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628" style-hover="border-color:rgba(0,194,168,0.5)">Add</button>
+        </div>
+      </sc-if>
+    </div>
+    <div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #F4F6FA">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+        <span style="font-size:14px;font-weight:600">Business type <span style="font-weight:500;color:#6C757D;font-size:12.5px">· {{ typeCount }} selected</span></span>
+        <input value="{{ typeQ }}" onChange="{{ setTypeQ }}" onInput="{{ setTypeQ }}" placeholder="Search types…" style="font-family:inherit;font-size:13px;padding:7px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;background:#fff;color:#0A1628;width:200px">
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ typeChips }}" as="c" hint-placeholder-count="12"><button onClick="{{ c.toggle }}" style="{{ c.css }}">{{ c.label }}</button></sc-for>
+      </div>
+    </div>
+    <div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #F4F6FA">
+      <span style="font-size:14px;font-weight:600">Industry</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ indChips }}" as="c" hint-placeholder-count="7"><button onClick="{{ c.toggle }}" style="{{ c.css }}">{{ c.label }}</button></sc-for>
+      </div>
+    </div>
+    <div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+        <span style="font-size:14px;font-weight:600;position:relative">Business size
+          <span onClick="{{ toggleSizeInfo }}" style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#F4F6FA;border:1px solid #E8ECF0;font-size:10.5px;font-weight:700;color:#6C757D;cursor:pointer;vertical-align:1px;margin-left:4px" style-hover="border-color:#00C2A8;color:#00775f">?</span>
+          <sc-if value="{{ sizeInfo }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;top:24px;left:0;z-index:8;background:#0A1628;color:#fff;font-size:12px;font-weight:500;line-height:1.6;border-radius:8px;padding:10px 14px;width:250px;box-shadow:0 8px 32px rgba(10,22,40,0.25);animation:go-fadeup 180ms cubic-bezier(0.4,0,0.2,1)">
+              <span style="display:block;font-weight:700">Size bands</span>
+              S — 1–9 staff<br>M — 10–29 staff<br>L — 30+ staff
+              <span style="display:block;padding-top:6px;color:#9AA5B1">Estimated from public signals (website, reviews, job ads) — not exact.</span>
+            </span>
+          </sc-if>
+        </span>
+        <div style="display:inline-flex;background:#F4F6FA;border:1px solid #E8ECF0;border-radius:100px;padding:3px">
+          <button onClick="{{ setSizeBands }}" style="{{ sizeBandsCss }}">Size bands</button>
+          <button onClick="{{ setSizeRange }}" style="{{ sizeRangeCss }}">Staff range</button>
+        </div>
+      </div>
+      <sc-if value="{{ sizeBands }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:8px;align-items:center">
+          <sc-for list="{{ sizeChips }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.toggle }}" style="{{ c.css }}">{{ c.label }}</button></sc-for>
+        </div>
+        <span style="font-size:12px;color:#6C757D">S = 1–9 staff · M = 10–29 · L = 30+ — estimated from public signals, not exact</span>
+      </sc-if>
+      <sc-if value="{{ sizeRange }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:36px 1fr;gap:8px 12px;align-items:center;max-width:520px">
+          <span style="font-size:12px;font-weight:600;color:#6C757D">Min</span>
+          <input type="range" min="1" max="100" value="{{ staffMin }}" onChange="{{ setStaffMin }}" onInput="{{ setStaffMin }}">
+          <span style="font-size:12px;font-weight:600;color:#6C757D">Max</span>
+          <input type="range" min="1" max="100" value="{{ staffMax }}" onChange="{{ setStaffMax }}" onInput="{{ setStaffMax }}">
+        </div>
+        <span style="font-size:13px;font-weight:600;color:#00775f">Businesses with {{ staffLabel }}</span>
+      </sc-if>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px">
+    <button onClick="{{ runSearch }}" style="{{ searchBtnCss }}" style-hover="background:#00a891">
+      <sc-if value="{{ searching }}" hint-placeholder-val="{{ false }}"><span style="width:14px;height:14px;border-radius:50%;border:2px solid rgba(10,22,40,0.25);border-top-color:#0A1628;animation:go-spin 700ms linear infinite"></span>Searching…</sc-if>
+      <sc-if value="{{ notSearching }}" hint-placeholder-val="{{ true }}">Search</sc-if>
+    </button>
+    <span style="font-size:12.5px;color:#6C757D">Results are matched and ranked against "{{ promoName }}"</span>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ is.shortlist }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Shortlist" style="max-width:1120px;margin:0 auto;padding:32px 40px 110px;display:flex;flex-direction:column;gap:20px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Shortlist</h1>
+      <span style="font-size:13px;color:#6C757D">{{ shortCount }} of 15 matches for "{{ shortPromo }}" — click a column to sort</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <select value="{{ fType }}" onChange="{{ setFType }}" style="font-family:inherit;font-size:12.5px;font-weight:500;padding:7px 10px;border:1.5px solid #E8ECF0;border-radius:6px;background:#fff;color:#0A1628;outline:none;max-width:170px">
+        <sc-for list="{{ shortTypeOpts }}" as="o" hint-placeholder-count="5"><option value="{{ o }}">{{ o }}</option></sc-for>
+      </select>
+      <select value="{{ fSize }}" onChange="{{ setFSize }}" style="font-family:inherit;font-size:12.5px;font-weight:500;padding:7px 10px;border:1.5px solid #E8ECF0;border-radius:6px;background:#fff;color:#0A1628;outline:none">
+        <sc-for list="{{ shortSizeOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
+      </select>
+      <select value="{{ fContact }}" onChange="{{ setFContact }}" style="font-family:inherit;font-size:12.5px;font-weight:500;padding:7px 10px;border:1.5px solid #E8ECF0;border-radius:6px;background:#fff;color:#0A1628;outline:none">
+        <sc-for list="{{ shortContactOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
+      </select>
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);overflow:hidden">
+    <div style="display:grid;grid-template-columns:40px 2.4fr 1.1fr 52px 60px 64px;gap:12px;padding:9px 24px;border-bottom:1px solid #E8ECF0;background:#F9FAFC">
+      <span></span>
+      <span onClick="{{ sortName }}" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D;cursor:pointer;white-space:nowrap" style-hover="color:#0A1628">{{ hBiz }}</span>
+      <span onClick="{{ sortType }}" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D;cursor:pointer;white-space:nowrap" style-hover="color:#0A1628">{{ hType }}</span>
+      <span onClick="{{ sortSize }}" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D;cursor:pointer;white-space:nowrap" style-hover="color:#0A1628">{{ hSize }}</span>
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Contact</span>
+      <span onClick="{{ sortFit }}" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D;cursor:pointer;white-space:nowrap" style-hover="color:#0A1628">{{ hFit }}</span>
+    </div>
+    <sc-for list="{{ shortRows }}" as="r" hint-placeholder-count="8">
+      <div onClick="{{ r.open }}" style="{{ r.rowCss }}" style-hover="background:#F9FAFC">
+        <span onClick="{{ r.toggle }}" style="{{ r.boxCss }}" style-hover="border-color:#00C2A8">
+          <sc-if value="{{ r.sel }}" hint-placeholder-val="{{ false }}"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.8 4.4 8 9 3" stroke="#0A1628" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if>
+        </span>
+        <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+          <span style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:14px;font-weight:600">{{ r.name }}</span>
+            <span style="font-size:12px;color:#6C757D">{{ r.suburb }}</span>
+            <sc-if value="{{ r.isPrev }}" hint-placeholder-val="{{ false }}"><span style="font-size:11.5px;font-weight:600;color:#9A5B00;background:rgba(255,170,0,0.12);border-radius:100px;padding:2px 9px;white-space:nowrap">Previously contacted (Mar 2026) — <span style="text-decoration:underline;cursor:pointer">view history</span></span></sc-if>
+            <sc-if value="{{ r.isDnc }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#C03530;background:rgba(192,53,48,0.08);border-radius:100px;padding:2px 9px;white-space:nowrap"><svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="#C03530" stroke-width="1.6"><rect x="3" y="6" width="8" height="5.5" rx="1.2"></rect><path d="M4.8 6V4.6a2.2 2.2 0 0 1 4.4 0V6"></path></svg>Do not contact</span></sc-if>
+          </span>
+          <sc-if value="{{ r.why }}" hint-placeholder-val="{{ true }}"><span style="font-size:12.5px;color:#6C757D;line-height:1.4">{{ r.why }}</span></sc-if>
+        </span>
+        <span style="font-size:13px;color:#6C757D">{{ r.type }}</span>
+        <span><span style="{{ r.sizeBadge }}">{{ r.size }}</span></span>
+        <span title="{{ r.contactTip }}" style="cursor:help;display:inline-flex">
+          <sc-if value="{{ r.cEmail }}" hint-placeholder-val="{{ true }}"><svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="#6C757D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1.8" y="3.2" width="10.4" height="7.6" rx="1.2"></rect><path d="m2.2 4 4.8 3.6L11.8 4"></path></svg></sc-if>
+          <sc-if value="{{ r.cNamed }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="#00a891" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="4.6" r="2.2"></circle><path d="M2.8 12a4.4 4.4 0 0 1 8.4 0"></path></svg></sc-if>
+          <sc-if value="{{ r.cPhone }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="#6C757D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h2.2l1 2.6-1.3 1a7.5 7.5 0 0 0 3 3l1-1.3 2.6 1V11a1.5 1.5 0 0 1-1.6 1.5A9.9 9.9 0 0 1 1.5 4.1 1.5 1.5 0 0 1 3 2.5Z"></path></svg></sc-if>
+        </span>
+        <span><span style="{{ r.fitStyle }}">{{ r.fit }}</span></span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+<div style="position:fixed;left:224px;right:0;bottom:0;background:#fff;border-top:1.5px solid #E8ECF0;box-shadow:0 -8px 32px rgba(10,22,40,0.06);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:4">
+  <span style="font-size:14px"><span style="font-weight:700">{{ selCount }} selected</span> <span style="color:#6C757D">— pre-ticked for top matches; do-not-contact rows are excluded automatically</span></span>
+  <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{ addToCampaign }}" style="font-family:inherit;font-size:14px;font-weight:600;padding:10px 22px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28);transition:background 200ms" style-hover="background:#00a891">Add to campaign →</button>
+  </sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ is.copy }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Campaign copy" style="max-width:1120px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:20px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Campaign copy</h1>
+      <span style="font-size:13px;color:#6C757D">Review each AI-drafted email before anything sends</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;flex-direction:column;gap:5px;min-width:170px">
+        <span style="font-size:12px;font-weight:600;color:#00775f">{{ approvedCount }} of {{ targetCount }} approved</span>
+        <div style="height:6px;border-radius:100px;background:#F4F6FA;border:1px solid #E8ECF0;overflow:hidden"><div style="{{ copyProgCss }}"></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
+        <button onClick="{{ approveAll }}" style="{{ approveAllCss }}" style-hover="background:#00a891">
+          <sc-if value="{{ queued }}" hint-placeholder-val="{{ false }}">✓ Queued for sending</sc-if>
+          <sc-if value="{{ notQueued }}" hint-placeholder-val="{{ true }}">Approve all &amp; queue for sending</sc-if>
+        </button>
+        <span style="font-size:11.5px;color:#6C757D">Sends in daily batches of ~30</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:start">
+    <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D;padding:14px 16px 8px">Selected targets</span>
+      <sc-for list="{{ copyTargets }}" as="t" hint-placeholder-count="8">
+        <div onClick="{{ t.pick }}" style="{{ t.css }}" style-hover="background:#F9FAFC">
+          <span style="{{ t.nameCss }}">{{ t.name }}</span>
+          <sc-if value="{{ t.ok }}" hint-placeholder-val="{{ false }}"><span style="width:17px;height:17px;border-radius:50%;background:rgba(14,138,99,0.12);display:inline-flex;align-items:center;justify-content:center;flex:none"><svg width="9" height="9" viewBox="0 0 11 11" fill="none"><path d="M2 5.8 4.4 8 9 3" stroke="#0E8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;border-bottom:1px solid #F4F6FA">
+        <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+          <span style="font-size:15px;font-weight:600">{{ curName }}</span>
+          <span style="font-size:12.5px;color:#6C757D">{{ curType }} · {{ curSuburb }} · To: {{ curTo }}</span>
+        </div>
+        <sc-if value="{{ curOk }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:100px;padding:3px 10px;color:#0E8A63;background:rgba(14,138,99,0.10);white-space:nowrap"><span style="width:6px;height:6px;border-radius:50%;background:#0E8A63"></span>Approved</span></sc-if>
+      </div>
+      <sc-if value="{{ notEditing }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Subject</span>
+            <span style="font-size:15px;font-weight:600;letter-spacing:-0.01em">{{ curSub }}</span>
+          </div>
+          <div style="font-size:13.5px;line-height:1.65;color:#303a4a;white-space:pre-wrap;border-top:1px solid #F4F6FA;padding-top:14px">{{ curBody }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 24px;border-top:1px solid #F4F6FA">
+          <button onClick="{{ approveCur }}" style="font-family:inherit;font-size:13.5px;font-weight:600;padding:9px 18px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28);transition:background 200ms" style-hover="background:#00a891">Approve</button>
+          <button onClick="{{ editCur }}" style="font-family:inherit;font-size:13.5px;font-weight:600;padding:8px 17px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.5)">Edit</button>
+          <button onClick="{{ regenCur }}" style="font-family:inherit;font-size:13.5px;font-weight:600;padding:8px 17px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628;transition:border-color 150ms" style-hover="border-color:rgba(0,194,168,0.5)">↻ Regenerate</button>
+          <span style="margin-left:auto;font-size:11.5px;color:#6C757D;text-align:right">Every email ends with Game On's details<br>and a one-click unsubscribe</span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ editing }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px">
+          <input value="{{ editSub }}" onChange="{{ setEditSub }}" onInput="{{ setEditSub }}" style="font-family:inherit;font-size:14.5px;font-weight:600;padding:10px 13px;border:1.5px solid #00C2A8;border-radius:6px;outline:none;box-shadow:0 0 0 3px rgba(0,194,168,0.15);color:#0A1628">
+          <textarea value="{{ editText }}" onChange="{{ setEditText }}" onInput="{{ setEditText }}" rows="16" style="font-family:inherit;font-size:13.5px;line-height:1.6;padding:12px 13px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;resize:vertical;color:#303a4a"></textarea>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 24px;border-top:1px solid #F4F6FA">
+          <button onClick="{{ saveEdit }}" style="font-family:inherit;font-size:13.5px;font-weight:600;padding:9px 18px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28)">Save changes</button>
+          <button onClick="{{ cancelEdit }}" style="font-family:inherit;font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:#6C757D" style-hover="color:#0A1628;background:#F4F6FA">Cancel</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ is.pipeline }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Pipeline" style="max-width:1200px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:20px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Pipeline</h1>
+    <span style="font-size:13px;color:#6C757D">Every business this promotion has touched, by stage</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:relative;z-index:6">
+    <sc-for list="{{ pipeFilters }}" as="f" hint-placeholder-count="5">
+      <div style="position:relative">
+        <button onClick="{{ f.toggleOpen }}" style="{{ f.btnCss }}">{{ f.btnLabel }} ▾</button>
+        <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:38px;left:0;background:#fff;border:1px solid #E8ECF0;border-radius:10px;box-shadow:0 8px 32px rgba(10,22,40,0.14);padding:8px;min-width:210px;z-index:7;display:flex;flex-direction:column;gap:2px;animation:go-fadeup 180ms cubic-bezier(0.4,0,0.2,1)">
+            <span onClick="{{ f.clear }}" style="{{ f.allCss }}">All</span>
+            <sc-for list="{{ f.opts }}" as="o" hint-placeholder-count="3">
+              <span onClick="{{ o.toggle }}" style="{{ o.css }}" style-hover="background:#F9FAFC"><span style="{{ o.boxCss }}"><sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}"><svg width="9" height="9" viewBox="0 0 11 11" fill="none"><path d="M2 5.8 4.4 8 9 3" stroke="#0A1628" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if></span>{{ o.label }}</span>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+    <sc-if value="{{ hasFilter }}" hint-placeholder-val="{{ false }}"><span onClick="{{ clearFilters }}" style="font-size:12.5px;font-weight:600;color:#00a891;cursor:pointer" style-hover="color:#0A1628">Clear filters ✕</span></sc-if>
+    <span style="font-size:12px;color:#6C757D;margin-left:auto">select multiple options within any filter — or All to look across everything</span>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);display:flex;align-items:stretch;padding:6px 10px">
+    <sc-for list="{{ stageStrip }}" as="s" hint-placeholder-count="9">
+      <div style="display:flex;align-items:center;flex:1;min-width:0">
+        <div onClick="{{ s.toggle }}" style="{{ s.css }}" style-hover="background:rgba(0,194,168,0.06)">
+          <span style="{{ s.numCss }}">{{ s.count }}</span>
+          <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;color:#6C757D;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ s.label }}</span>
+        </div>
+        <sc-if value="{{ s.hasArrow }}" hint-placeholder-val="{{ true }}"><span style="color:#C6CDD5;font-size:12px;flex:none;padding:0 2px">→</span></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:start">
+    <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);padding:12px 8px;display:flex;flex-direction:column;gap:2px">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D;padding:2px 10px 8px">Saved lists</span>
+      <span onClick="{{ clearFilters }}" style="{{ allListCss }}" style-hover="background:#F4F6FA">All businesses</span>
+      <sc-for list="{{ savedLists }}" as="l" hint-placeholder-count="3">
+        <span onClick="{{ l.toggle }}" style="{{ l.css }}" style-hover="background:#F4F6FA">{{ l.label }}<span style="margin-left:auto;font-size:11px;font-weight:600;color:#6C757D;background:#F4F6FA;border-radius:100px;padding:1px 7px">{{ l.count }}</span></span>
+      </sc-for>
+    </div>
+    <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);overflow:hidden">
+      <div style="display:flex;align-items:baseline;gap:10px;padding:14px 24px 10px">
+        <span style="font-size:14px;font-weight:600">{{ pipeLabel }}</span>
+        <span style="font-size:12px;color:#6C757D">{{ pipeCount }} businesses</span>
+      </div>
+      <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.2fr;gap:12px;padding:8px 24px;border-top:1px solid #E8ECF0;border-bottom:1px solid #E8ECF0;background:#F9FAFC">
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Business</span>
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Suburb</span>
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Stage</span>
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Last activity</span>
+      </div>
+      <sc-for list="{{ pipeRows }}" as="r" hint-placeholder-count="8">
+        <div onClick="{{ r.open }}" style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.2fr;gap:12px;align-items:center;padding:12px 24px;border-bottom:1px solid #F4F6FA;cursor:pointer" style-hover="background:#F9FAFC">
+          <span style="display:flex;flex-direction:column;gap:1px;min-width:0">
+            <span style="font-size:13.5px;font-weight:600">{{ r.name }}</span>
+            <span style="font-size:12px;color:#6C757D">{{ r.type }}</span>
+          </span>
+          <span style="font-size:13px;color:#6C757D">{{ r.suburb }}</span>
+          <span><span style="{{ r.stageCss }}"><span style="{{ r.dotCss }}"></span>{{ r.stageLabel }}</span></span>
+          <span style="font-size:12.5px;color:#6C757D">{{ r.last }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ is.dnc }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Do not contact" style="max-width:860px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:20px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Do not contact</h1>
+    <span style="font-size:13px;color:#6C757D;display:inline-flex;align-items:center;gap:7px"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="2.5" y="6" width="9" height="6" rx="1.5" stroke="#6C757D" stroke-width="1.4"></rect><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="#6C757D" stroke-width="1.4"></path></svg>Permanently excluded from all current and future campaigns.</span>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);overflow:hidden">
+    <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 40px;gap:12px;padding:9px 24px;border-bottom:1px solid #E8ECF0;background:#F9FAFC">
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Business</span>
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Reason</span>
+      <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Added</span>
+      <span></span>
+    </div>
+    <sc-for list="{{ dncRows }}" as="r" hint-placeholder-count="3">
+      <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 40px;gap:12px;align-items:center;padding:14px 24px;border-bottom:1px solid #F4F6FA">
+        <span style="display:flex;flex-direction:column;gap:1px">
+          <span style="font-size:14px;font-weight:600">{{ r.name }}</span>
+          <span style="font-size:12px;color:#6C757D">{{ r.type }}</span>
+        </span>
+        <span style="font-size:13px;color:#6C757D">{{ r.reason }}</span>
+        <span style="font-size:13px;color:#6C757D">{{ r.date }}</span>
+        <span style="text-align:center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2.5" y="6" width="9" height="6" rx="1.5" stroke="#9AA5B1" stroke-width="1.4"></rect><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="#9AA5B1" stroke-width="1.4"></path></svg></span>
+      </div>
+    </sc-for>
+    <div style="padding:13px 24px;background:#F9FAFC;font-size:12px;color:#6C757D">Entries here can't be deleted — that's deliberate. Unsubscribes are honoured permanently under the Spam Act 2003.</div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ is.settings }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Settings" style="max-width:860px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:20px;animation:go-fadeup 300ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <h1 style="margin:0;font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.15">Settings</h1>
+    <span style="font-size:13px;color:#6C757D">Workspace defaults used across searches and campaigns</span>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <h2 style="margin:0;font-size:17px;font-weight:600;letter-spacing:-0.02em">Venues</h2>
+      <span style="font-size:12.5px;color:#6C757D">"Distance from venue" searches measure from the venue you pick — the primary is the default.</span>
+    </div>
+    <sc-for list="{{ venRows }}" as="v" hint-placeholder-count="2">
+      <div style="display:flex;align-items:center;gap:12px;border:1px solid #F4F6FA;border-radius:8px;padding:11px 14px">
+        <span style="display:flex;flex-direction:column;gap:1px;flex:1;min-width:0">
+          <span style="display:flex;align-items:center;gap:8px"><span style="font-size:13.5px;font-weight:600">{{ v.n }}</span><sc-if value="{{ v.isPrimary }}" hint-placeholder-val="{{ true }}"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#00775f;background:rgba(0,194,168,0.12);border-radius:100px;padding:1px 8px">Primary</span></sc-if></span>
+          <span style="font-size:12px;color:#6C757D">{{ v.a }}</span>
+        </span>
+        <sc-if value="{{ v.notPrimary }}" hint-placeholder-val="{{ false }}">
+          <span onClick="{{ v.makePrimary }}" style="font-size:12px;font-weight:600;color:#00a891;cursor:pointer;white-space:nowrap" style-hover="color:#0A1628">Make primary</span>
+          <span onClick="{{ v.remove }}" style="font-size:12px;font-weight:600;color:#C03530;cursor:pointer;opacity:0.7" style-hover="opacity:1">Remove</span>
+        </sc-if>
+      </div>
+    </sc-for>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <input value="{{ venName }}" onChange="{{ setVenName }}" onInput="{{ setVenName }}" placeholder="Venue name" style="font-family:inherit;font-size:13px;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;flex:1;min-width:160px;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+      <input value="{{ venAddr }}" onChange="{{ setVenAddr }}" onInput="{{ setVenAddr }}" placeholder="Address" style="font-family:inherit;font-size:13px;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;flex:2;min-width:200px;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+      <button onClick="{{ addVen }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628" style-hover="border-color:rgba(0,194,168,0.5)">Add venue</button>
+    </div>
+  </div>
+  <div style="background:#fff;border:1px solid #E8ECF0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.04);padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <h2 style="margin:0;font-size:17px;font-weight:600;letter-spacing:-0.02em">Named areas</h2>
+      <span style="font-size:12.5px;color:#6C757D">The area list offered in "Find businesses" — add the suburbs and regions you target.</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ areasManage }}" as="a" hint-placeholder-count="8">
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;background:#fff;border:1.5px solid #E8ECF0;border-radius:100px;padding:6px 8px 6px 13px">{{ a.label }}<span onClick="{{ a.remove }}" style="font-size:12px;color:#6C757D;cursor:pointer;line-height:1;padding:1px 4px" style-hover="color:#C03530">✕</span></span>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:8px;max-width:340px">
+      <input value="{{ areaInput }}" onChange="{{ setAreaInput }}" onInput="{{ setAreaInput }}" onKeyDown="{{ areaKey }}" placeholder="Add an area…" style="font-family:inherit;font-size:13px;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;flex:1;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+      <button onClick="{{ addArea }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628" style-hover="border-color:rgba(0,194,168,0.5)">Add</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+</main>
+</div>
+<sc-if value="{{ wizOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ wizClose }}" style="position:fixed;inset:0;background:rgba(10,22,40,0.45);z-index:20;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div onClick="{{ stop }}" style="background:#fff;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.18);width:640px;max-width:100%;max-height:88vh;overflow:auto;display:flex;flex-direction:column;animation:go-fadeup 250ms cubic-bezier(0.4,0,0.2,1)">
+    <div style="display:flex;align-items:center;gap:14px;padding:20px 28px;border-bottom:1px solid #F4F6FA">
+      <span style="{{ step1Css }}">1</span><span style="height:1.5px;width:24px;background:#E8ECF0"></span>
+      <span style="{{ step2Css }}">2</span><span style="height:1.5px;width:24px;background:#E8ECF0"></span>
+      <span style="{{ step3Css }}">3</span>
+      <span style="margin-left:auto;font-size:12px;color:#6C757D">{{ wizTitle }}</span>
+      <span onClick="{{ wizClose }}" style="font-size:16px;color:#6C757D;cursor:pointer;line-height:1" style-hover="color:#0A1628">✕</span>
+    </div>
+    <sc-if value="{{ wizStep1 }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:24px 28px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <h2 style="margin:0;font-size:20px;font-weight:600;letter-spacing:-0.02em">What's the offer?</h2>
+          <span style="font-size:13px;color:#6C757D">Give it a name your team will recognise — the AI uses the description and selling points to draft emails.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:12.5px;font-weight:600">Promotion name</span>
+          <input value="{{ wizName }}" onChange="{{ setWizName }}" onInput="{{ setWizName }}" placeholder="e.g. New Year Team Kick-offs" style="font-family:inherit;font-size:14px;padding:10px 13px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:12.5px;font-weight:600">Description</span>
+          <textarea value="{{ wizDesc }}" onChange="{{ setWizDesc }}" onInput="{{ setWizDesc }}" rows="3" placeholder="What's included, who it's for, and why it's worth replying to…" style="font-family:inherit;font-size:14px;line-height:1.55;padding:10px 13px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;resize:vertical;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)"></textarea>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12.5px;font-weight:600">Key selling points <span style="font-weight:500;color:#00a891;font-size:11.5px">✦ AI-suggested — tap to include</span></span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ wizPoints }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.toggle }}" style="{{ c.css }}">{{ c.label }}</button></sc-for>
+          </div>
+          <div style="display:flex;gap:8px">
+            <input value="{{ wizPointInput }}" onChange="{{ setWizPointInput }}" onInput="{{ setWizPointInput }}" onKeyDown="{{ wizPointKey }}" placeholder="Add your own…" style="font-family:inherit;font-size:13px;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;flex:1;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+            <button onClick="{{ addWizPoint }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628" style-hover="border-color:rgba(0,194,168,0.5)">Add</button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:12.5px;font-weight:600">Photos <span style="font-weight:500;color:#6C757D;font-size:11.5px">— used in emails and on the booking page</span></span>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+            <div style="height:84px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="promo-img-1" shape="rounded" radius="8" placeholder="Add photo" hint-size="100%,84px"></x-import></div>
+            <div style="height:84px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="promo-img-2" shape="rounded" radius="8" placeholder="Add photo" hint-size="100%,84px"></x-import></div>
+            <div style="height:84px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="promo-img-3" shape="rounded" radius="8" placeholder="Add photo" hint-size="100%,84px"></x-import></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ wizStep2 }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:24px 28px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <h2 style="margin:0;font-size:20px;font-weight:600;letter-spacing:-0.02em">Who does it suit?</h2>
+          <span style="font-size:13px;color:#6C757D">Suggested from your offer — toggle the audiences worth targeting. You can refine further when you search.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ wizAud }}" as="a" hint-placeholder-count="5">
+            <div onClick="{{ a.toggle }}" style="{{ a.css }}" style-hover="border-color:rgba(0,194,168,0.45)">
+              <span style="{{ a.tickCss }}"><sc-if value="{{ a.on }}" hint-placeholder-val="{{ true }}"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.8 4.4 8 9 3" stroke="#0A1628" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if></span>
+              <span style="display:flex;flex-direction:column;gap:1px">
+                <span style="font-size:14px;font-weight:600">{{ a.label }}</span>
+                <span style="font-size:12.5px;color:#6C757D">{{ a.hint }}</span>
+              </span>
+            </div>
+          </sc-for>
+          <div style="display:flex;gap:8px">
+            <input value="{{ audInput }}" onChange="{{ setAudInput }}" onInput="{{ setAudInput }}" onKeyDown="{{ audKey }}" placeholder="Add a custom audience…" style="font-family:inherit;font-size:13px;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;flex:1;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+            <button onClick="{{ addWizAud }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628" style-hover="border-color:rgba(0,194,168,0.5)">Add</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ wizStep3 }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:24px 28px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <h2 style="margin:0;font-size:20px;font-weight:600;letter-spacing:-0.02em">Review</h2>
+          <span style="font-size:13px;color:#6C757D">Create the promotion as a draft — then find businesses that match it.</span>
+        </div>
+        <div style="background:#F9FAFC;border:1px solid #E8ECF0;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Offer</span>
+            <span style="font-size:15px;font-weight:600">{{ wizNameOut }}</span>
+            <span style="font-size:13px;color:#6C757D">{{ wizDescOut }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Selling points</span>
+            <span style="font-size:13px;line-height:1.55">{{ wizPointsOn }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Audiences</span>
+            <span style="font-size:13px;line-height:1.55">{{ wizAudOn }}</span>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:10px;padding:16px 28px;border-top:1px solid #F4F6FA;margin-top:auto">
+      <sc-if value="{{ wizNotFirst }}" hint-placeholder-val="{{ false }}"><button onClick="{{ wizBack }}" style="font-family:inherit;font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:#6C757D" style-hover="color:#0A1628;background:#F4F6FA">← Back</button></sc-if>
+      <span style="flex:1"></span>
+      <sc-if value="{{ wizNotLast }}" hint-placeholder-val="{{ true }}"><button onClick="{{ wizNext }}" style="{{ wizNextCss }}" style-hover="background:#00a891">Continue →</button></sc-if>
+      <sc-if value="{{ wizStep3 }}" hint-placeholder-val="{{ false }}"><button onClick="{{ wizFinish }}" style="font-family:inherit;font-size:14px;font-weight:600;padding:10px 22px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28)" style-hover="background:#00a891">{{ wizFinishLabel }}</button></sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;background:rgba(10,22,40,0.30);z-index:15"></div>
+<div data-screen-label="Lead detail" style="position:fixed;top:0;right:0;bottom:0;width:760px;max-width:92vw;background:#fff;z-index:16;box-shadow:-24px 0 48px rgba(10,22,40,0.10);display:flex;flex-direction:column;animation:go-slidein 280ms cubic-bezier(0.4,0,0.2,1)">
+  <div style="display:flex;align-items:flex-start;gap:14px;padding:22px 28px;border-bottom:1px solid #F4F6FA">
+    <div style="display:flex;flex-direction:column;gap:5px;min-width:0">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:20px;font-weight:700;letter-spacing:-0.02em">{{ drawer.name }}</h2>
+        <span style="{{ drawer.stageCss }}"><span style="{{ drawer.dotCss }}"></span>{{ drawer.stageLabel }}</span>
+      </div>
+      <span style="font-size:13px;color:#6C757D">{{ drawer.type }} · {{ drawer.suburb }} · Size {{ drawer.size }} <span title="Estimated from public signals — not exact" style="cursor:help">ⓘ</span> · {{ drawer.drive }} from venue</span>
+    </div>
+    <span onClick="{{ closeDrawer }}" style="margin-left:auto;font-size:17px;color:#6C757D;cursor:pointer;line-height:1;padding:2px" style-hover="color:#0A1628">✕</span>
+  </div>
+  <div style="flex:1;overflow:auto;display:grid;grid-template-columns:1fr 1.1fr;gap:0">
+    <div style="padding:22px 24px 28px 28px;border-right:1px solid #F4F6FA;display:flex;flex-direction:column;gap:16px">
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#303a4a;background:rgba(0,194,168,0.05);border:1px solid rgba(0,194,168,0.2);border-radius:8px;padding:12px 14px"><span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#00a891;display:block;padding-bottom:4px">✦ AI summary</span>{{ drawer.summary }}</p>
+      <div style="height:96px;border-radius:8px;background:repeating-linear-gradient(45deg,#F4F6FA,#F4F6FA 8px,#eef1f6 8px,#eef1f6 16px);border:1px solid #E8ECF0;display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-size:12px;color:#6C757D;background:#fff;border:1px solid #E8ECF0;border-radius:100px;padding:4px 12px">Map — {{ drawer.addr }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:88px 1fr;gap:7px 12px;font-size:13px">
+        <span style="color:#6C757D">Entity</span><span style="font-weight:500">{{ drawer.entity }}</span>
+        <span style="color:#6C757D">ABN</span><span style="font-weight:500">{{ drawer.abn }}</span>
+        <span style="color:#6C757D">Website</span><span style="font-weight:500;color:#00a891">{{ drawer.web }}</span>
+        <span style="color:#6C757D">Phone</span><span style="font-weight:500">{{ drawer.phone }}</span>
+        <span style="color:#6C757D">Email</span><span style="font-weight:500;word-break:break-all">{{ drawer.emailShow }}</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #F4F6FA;padding-top:14px">
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6C757D">Contacts</span>
+        <sc-for list="{{ drawer.contacts }}" as="c" hint-placeholder-count="2">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:28px;height:28px;border-radius:50%;background:rgba(0,194,168,0.12);color:#00775f;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:none">{{ c.init }}</span>
+            <span style="display:flex;flex-direction:column;min-width:0;flex:1">
+              <span style="display:flex;align-items:center;gap:7px"><span style="font-size:13px;font-weight:600">{{ c.n }}</span><sc-if value="{{ c.isPrimary }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#00775f;background:rgba(0,194,168,0.12);border-radius:100px;padding:1px 8px">Primary</span></sc-if></span>
+              <span style="font-size:11.5px;color:#6C757D">{{ c.r }}</span>
+              <span style="font-size:11.5px;color:#00a891;word-break:break-all">{{ c.detail }}</span>
+            </span>
+            <sc-if value="{{ c.notPrimary }}" hint-placeholder-val="{{ false }}"><span onClick="{{ c.makePrimary }}" style="font-size:11.5px;font-weight:600;color:#00a891;cursor:pointer;white-space:nowrap" style-hover="color:#0A1628">Make primary</span></sc-if>
+          </div>
+        </sc-for>
+        <sc-if value="{{ drawer.notAddContactOpen }}" hint-placeholder-val="{{ true }}">
+          <span onClick="{{ drawer.toggleAddContact }}" style="font-size:12px;font-weight:600;color:#00a891;cursor:pointer;align-self:flex-start" style-hover="color:#0A1628">+ Add contact</span>
+        </sc-if>
+        <sc-if value="{{ drawer.addContactOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#F9FAFC;border:1px solid #E8ECF0;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:8px">
+              <input value="{{ contactInput }}" onChange="{{ setContactInput }}" onInput="{{ setContactInput }}" placeholder="Name" style="font-family:inherit;font-size:12.5px;padding:7px 11px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;background:#fff;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+              <input value="{{ cRole }}" onChange="{{ setCRole }}" onInput="{{ setCRole }}" placeholder="Role" style="font-family:inherit;font-size:12.5px;padding:7px 11px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;background:#fff;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+            </div>
+            <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:8px">
+              <input value="{{ cEmail }}" onChange="{{ setCEmail }}" onInput="{{ setCEmail }}" placeholder="Email (optional)" style="font-family:inherit;font-size:12.5px;padding:7px 11px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;background:#fff;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+              <input value="{{ cPhone }}" onChange="{{ setCPhone }}" onInput="{{ setCPhone }}" placeholder="Phone (optional)" style="font-family:inherit;font-size:12.5px;padding:7px 11px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;background:#fff;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+            </div>
+            <div style="display:flex;gap:8px">
+              <button onClick="{{ drawer.addContact }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628" style-hover="background:#00a891">Add contact</button>
+              <button onClick="{{ drawer.toggleAddContact }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 11px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:#6C757D" style-hover="color:#0A1628">Cancel</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #F4F6FA;padding-top:14px;margin-top:auto">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <button onClick="{{ drawer.toggleRem }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#0A1628;display:inline-flex;align-items:center;gap:6px" style-hover="border-color:rgba(0,194,168,0.5)"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#9A5B00" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2a3.6 3.6 0 0 1 3.6 3.6c0 2.7 1 3.4 1 3.4H2.4s1-.7 1-3.4A3.6 3.6 0 0 1 7 2Z"></path><path d="M5.8 11.2a1.3 1.3 0 0 0 2.4 0"></path></svg>Set reminder</button>
+          <button onClick="{{ drawer.markPot }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#9A5B00" style-hover="border-color:rgba(255,170,0,0.5)">Mark as potential</button>
+          <button onClick="{{ drawer.markNot }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:6px;cursor:pointer;background:#fff;border:1.5px solid #E8ECF0;color:#6C757D" style-hover="border-color:#C6CDD5">Mark not interested</button>
+        </div>
+        <sc-if value="{{ drawer.remOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:8px;background:#F9FAFC;border:1px solid #E8ECF0;border-radius:8px;padding:10px 12px;flex-wrap:wrap">
+            <input type="date" value="{{ remDate }}" onChange="{{ setRemDate }}" style="font-family:inherit;font-size:12.5px;padding:6px 9px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;color:#0A1628">
+            <input type="time" value="{{ remTime }}" onChange="{{ setRemTime }}" style="font-family:inherit;font-size:12.5px;padding:6px 9px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;color:#0A1628">
+            <span style="font-size:11.5px;color:#6C757D">time optional</span>
+            <button onClick="{{ drawer.saveRem }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;margin-left:auto" style-hover="background:#00a891">Save reminder</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ drawer.notDncConfirm }}" hint-placeholder-val="{{ true }}">
+          <sc-if value="{{ drawer.notOnDnc }}" hint-placeholder-val="{{ true }}"><span onClick="{{ drawer.askDnc }}" style="font-size:12px;color:#C03530;cursor:pointer;opacity:0.75" style-hover="opacity:1">Add to Do-Not-Contact</span></sc-if>
+          <sc-if value="{{ drawer.onDnc }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#C03530"><svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="#C03530" stroke-width="1.5"><rect x="3" y="6" width="8" height="5.5" rx="1.2"></rect><path d="M4.8 6V4.6a2.2 2.2 0 0 1 4.4 0V6"></path></svg>On the do-not-contact list — permanently excluded from all campaigns</span></sc-if>
+        </sc-if>
+        <sc-if value="{{ drawer.dncConfirm }}" hint-placeholder-val="{{ false }}">
+          <div style="background:rgba(192,53,48,0.05);border:1.5px solid rgba(192,53,48,0.35);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:12.5px;line-height:1.5;color:#0A1628"><strong>Add {{ drawer.name }} to Do-Not-Contact?</strong> They'll be permanently excluded from all current and future campaigns. This can't be undone from the app.</span>
+            <div style="display:flex;gap:8px">
+              <button onClick="{{ drawer.confirmDnc }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:6px;border:none;cursor:pointer;background:#C03530;color:#fff">Confirm — never contact</button>
+              <button onClick="{{ drawer.cancelDnc }}" style="font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:#6C757D" style-hover="color:#0A1628">Cancel</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="padding:0 28px 24px 24px;display:flex;flex-direction:column;background:#FBFCFE;min-width:0">
+      <div style="display:flex;gap:18px;border-bottom:1px solid #E8ECF0;position:sticky;top:0;background:#FBFCFE;z-index:2">
+        <span onClick="{{ drawer.goTabT }}" style="{{ drawer.tabTCss }}">Timeline</span>
+        <span onClick="{{ drawer.goTabD }}" style="{{ drawer.tabDCss }}">Notes &amp; emails ({{ drawer.docsCount }})</span>
+      </div>
+      <sc-if value="{{ drawer.tabTimeline }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px;padding:18px 0 16px">
+          <sc-for list="{{ drawer.tl }}" as="t" hint-placeholder-count="5">
+            <div style="display:flex;gap:12px;position:relative">
+              <span style="{{ t.wrapCss }}">{{ t.icon }}</span><span style="{{ t.lineCss }}"></span>
+              <span style="display:flex;flex-direction:column;gap:1px;min-width:0;flex:1">
+                <sc-if value="{{ t.plain }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:13px;line-height:1.45">{{ t.t }} <sc-if value="{{ t.hasLink }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:#00a891;cursor:pointer" style-hover="color:#0A1628">{{ t.link }}</span></sc-if></span>
+                </sc-if>
+                <sc-if value="{{ t.isNote }}" hint-placeholder-val="{{ false }}">
+                  <span onClick="{{ t.toggleExp }}" style="font-size:13px;line-height:1.45;cursor:pointer">Note: "{{ t.head }}" <sc-if value="{{ t.hasBody }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:#00a891">details ▾</span></sc-if></span>
+                  <sc-if value="{{ t.expanded }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;line-height:1.55;color:#303a4a;background:#fff;border:1px solid #E8ECF0;border-radius:8px;padding:10px 12px;margin-top:4px;white-space:pre-wrap">{{ t.body }}</span></sc-if>
+                </sc-if>
+                <span style="font-size:11.5px;color:#9AA5B1">{{ t.d }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:auto;border-top:1px solid #E8ECF0;padding-top:12px">
+          <div style="display:inline-flex;align-self:flex-start;background:#F4F6FA;border:1px solid #E8ECF0;border-radius:100px;padding:2px">
+            <button onClick="{{ drawer.setModeQ }}" style="{{ drawer.mQCss }}">Quick note</button>
+            <button onClick="{{ drawer.setModeD }}" style="{{ drawer.mDCss }}">Detailed note</button>
+          </div>
+          <sc-if value="{{ drawer.modeQuick }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:8px">
+              <input value="{{ noteDraft }}" onChange="{{ setNoteDraft }}" onInput="{{ setNoteDraft }}" placeholder="One-line note…" style="font-family:inherit;font-size:13px;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;flex:1;background:#fff;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+              <button onClick="{{ drawer.addNote }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 15px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628" style-hover="background:#00a891">Add</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ drawer.modeDet }}" hint-placeholder-val="{{ false }}">
+            <input value="{{ noteHead }}" onChange="{{ setNoteHead }}" onInput="{{ setNoteHead }}" placeholder="Headline — this is what shows in the timeline" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;background:#fff;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)">
+            <textarea value="{{ noteBody }}" onChange="{{ setNoteBody }}" onInput="{{ setNoteBody }}" rows="4" placeholder="Details — paste email content, call notes, anything worth keeping…" style="font-family:inherit;font-size:12.5px;line-height:1.55;padding:9px 12px;border:1.5px solid #E8ECF0;border-radius:6px;outline:none;resize:vertical;background:#fff;color:#0A1628" style-focus="border-color:#00C2A8;box-shadow:0 0 0 3px rgba(0,194,168,0.15)"></textarea>
+            <button onClick="{{ drawer.addDetNote }}" style="font-family:inherit;font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;align-self:flex-start" style-hover="background:#00a891">Save note</button>
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ drawer.tabDocs }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:18px 0">
+          <sc-for list="{{ drawer.docs }}" as="x" hint-placeholder-count="3">
+            <div style="background:#fff;border:1px solid #E8ECF0;border-radius:10px;padding:13px 15px;display:flex;flex-direction:column;gap:7px">
+              <div style="display:flex;align-items:center;gap:9px">
+                <span style="{{ x.chipCss }}">{{ x.kind }}</span>
+                <span style="font-size:13px;font-weight:600;min-width:0">{{ x.title }}</span>
+              </div>
+              <span style="font-size:11.5px;color:#9AA5B1">{{ x.meta }}</span>
+              <sc-if value="{{ x.hasBody }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;line-height:1.6;color:#303a4a;white-space:pre-wrap;border-top:1px solid #F4F6FA;padding-top:8px">{{ x.body }}</span></sc-if>
+            </div>
+          </sc-for>
+          <span style="font-size:12px;color:#6C757D;padding-top:4px">Paste emails or add attachments from your email client with a detailed note — the headline shows in the timeline, the full content lives here.</span>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;dailyLimit&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:25,&quot;min&quot;:10,&quot;max&quot;:50,&quot;step&quot;:5,&quot;unit&quot;:&quot; emails/day&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Sending&quot;},&quot;showRationale&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Shortlist&quot;}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.biz = [
+      {id:'stepz',name:'Stepz Dance Academy',suburb:'Berwick',type:'Dance school',ind:'Education',size:'S',contact:'named',contactName:'Sarah Nguyen',role:'Studio Manager',email:'sarah@stepzdance.com.au',phone:'(03) 9702 4418',web:'stepzdance.com.au',abn:'84 612 330 417',entity:'Stepz Dance Academy Pty Ltd',addr:'12 Clyde Rd, Berwick VIC 3806',drive:'14 min',fit:92,why:'Dance school running end-of-term concerts — strong fit for group party offer',stage:'Replied',last:'Replied 2h ago',summary:'Family-run studio with ~120 enrolled students across jazz, hip hop and contemporary. Runs end-of-term concerts and school-holiday workshops.',hook:'Saw the Term 4 concert dates on your site — if you run a wrap party for students, families or your teaching team, our party rooms and VR floor handle big groups well.'},
+      {id:'harcourt',name:'Harcourt & Vine Accounting',suburb:'Cranbourne',type:'Accounting firm',ind:'Professional services',size:'M',contact:'email',email:'admin@harcourtvine.com.au',phone:'(03) 5995 2280',web:'harcourtvine.com.au',abn:'31 447 902 118',entity:'Harcourt & Vine Pty Ltd',addr:'Suite 4, 88 High St, Cranbourne VIC 3977',drive:'6 min',fit:88,why:'Accounting firm, ~15 staff — good fit for Christmas function',stage:'Replied',last:'Replied yesterday',summary:'Suburban accounting practice, ~15 staff across tax and bookkeeping. Active on LinkedIn; posts about staff culture.',hook:'End-of-year functions for teams your size are our bread and butter — private karaoke rooms after a VR tournament tends to be the crowd favourite with office teams.'},
+      {id:'southside',name:'Southside Property Group',suburb:'Clyde North',type:'Real estate agency',ind:'Professional services',size:'M',contact:'named',contactName:'Marcus Bellini',role:'Director',email:'marcus@southsideproperty.com.au',phone:'(03) 5991 7744',web:'southsideproperty.com.au',abn:'77 210 664 903',entity:'Southside Property Group Pty Ltd',addr:'2/145 Berwick-Cranbourne Rd, Clyde North VIC 3978',drive:'9 min',fit:86,why:'Sales team of ~12 plus rentals — runs quarterly team events',stage:'Clicked',last:'Clicked yesterday',summary:'Residential agency covering Clyde North and Cranbourne growth corridor. ~12 sales agents plus a property management team.',hook:'Your team page mentions quarterly celebration nights — laser tag between the sales and rentals teams settles the office rivalry properly.'},
+      {id:'ironbark',name:'Ironbark Fitness',suburb:'Frankston',type:'Gym',ind:'Health',size:'M',contact:'email',email:'info@ironbarkfitness.com.au',phone:'(03) 9781 3356',web:'ironbarkfitness.com.au',abn:'52 883 419 260',entity:'Ironbark Fitness Pty Ltd',addr:'7 Playne St, Frankston VIC 3199',drive:'22 min',fit:83,why:'24/7 gym, 8 staff and an active member community — social night potential',stage:'Clicked',last:'Clicked 5h ago',summary:'Independent 24/7 gym with 8 staff and ~900 members. Runs member challenges and social events each quarter.',hook:'A members social night that is not just another barbecue — VR fitness challenges and laser tag suit a gym crowd perfectly.'},
+      {id:'sprouts',name:'Little Sprouts Early Learning',suburb:'Cranbourne West',type:'Childcare centre',ind:'Education',size:'M',contact:'email',email:'director@littlesprouts.net.au',phone:'(03) 5996 0412',web:'littlesprouts.net.au',abn:'19 302 587 441',entity:'Little Sprouts Early Learning Pty Ltd',addr:'31 Strathlea Dr, Cranbourne West VIC 3977',drive:'4 min',fit:81,why:'Three-room centre, ~20 educators — staff Christmas party fit',stage:'Contacted',last:'Reminder due today',summary:'Long-day-care centre with three rooms and ~20 educators. Five minutes from the venue.',hook:'Your team spends all year looking after everyone else — a staff Christmas night four minutes up the road is an easy one to say yes to.'},
+      {id:'duke',name:'The Duke Hotel',suburb:'Dandenong',type:'Pub',ind:'Hospitality',size:'L',contact:'email',email:'functions@thedukehotel.com.au',phone:'(03) 9792 6688',web:'thedukehotel.com.au',abn:'44 095 771 328',entity:'Duke Hospitality Group Pty Ltd',addr:'214 Lonsdale St, Dandenong VIC 3175',drive:'18 min',fit:79,why:'Function-focused pub, ~35 staff — strong staff-party fit',stage:'Booked',last:'Booked 11 Jul',summary:'Large suburban pub with bistro and function rooms, ~35 staff across kitchen, bar and floor.',hook:'Hospitality teams are the hardest to organise a party for — you host everyone else all December. We run late sessions that work around service.'},
+      {id:'cmps',name:'Cranbourne Meadows Primary',suburb:'Cranbourne',type:'Primary school',ind:'Education',size:'L',contact:'phone',phone:'(03) 5996 8833',web:'cranmeadowsps.vic.edu.au',abn:'—',entity:'Dept. of Education (Vic)',addr:'55 Meadowvale Dr, Cranbourne VIC 3977',drive:'7 min',fit:76,why:'Large staff room (~45 teachers) — end-of-year celebration fit',stage:'Selected',last:'Selected 5 Jul',summary:'Government primary school, ~45 teaching and support staff. Social club organises the end-of-year event.',hook:'For a staff room of 45, the end-of-year night needs somewhere that handles a big group without splitting it up — that is exactly what we are built for.'},
+      {id:'bayside',name:'Bayside Physio & Co',suburb:'Frankston',type:'Physiotherapist',ind:'Health',size:'S',contact:'email',email:'reception@baysidephysio.com.au',phone:'(03) 9783 2190',web:'baysidephysio.com.au',abn:'68 550 236 917',entity:'Bayside Physio & Co Pty Ltd',addr:'118 Beach St, Frankston VIC 3199',drive:'23 min',fit:74,why:'Growing allied-health clinic, 6 practitioners — small team outing fit',stage:'Contacted',last:'Emailed 8 Jul',summary:'Allied-health clinic with 6 practitioners and 3 admin staff. Recently expanded into a second suite.',hook:'Small-team Christmas parties are easy to get wrong — too small for a function room, too big for a dinner table. Our group packages start at 8 people.'},
+      {id:'peninsula',name:'Peninsula Plumbing Co',suburb:'Cranbourne',type:'Plumber',ind:'Trades',size:'S',contact:'phone',phone:'0418 552 007',web:'peninsulaplumbing.com.au',abn:'23 664 108 552',entity:'Peninsula Plumbing Co Pty Ltd',addr:'Cranbourne VIC 3977',drive:'8 min',fit:71,why:'Crew of ~5 — books an annual Christmas do',stage:'New',last:'Found 3 Jul',summary:'Residential plumbing crew of ~5. Phone and web form only — no published email.',hook:'A crew Christmas do with laser tag and a karaoke room beats the same pub as last year.'},
+      {id:'bloom',name:'Berwick Bloom Florist',suburb:'Berwick',type:'Florist',ind:'Retail',size:'S',contact:'email',email:'hello@berwickbloom.com.au',phone:'(03) 9707 4451',web:'berwickbloom.com.au',abn:'91 738 425 660',entity:'K & J Nguyen Partnership',addr:'6 Blackburne Sq, Berwick VIC 3806',drive:'15 min',fit:68,why:'Two-person shop — likely too small for the group offer',stage:'New',last:'Found 3 Jul',summary:'Boutique florist, two staff. Strong local Instagram presence.',hook:'Even a team of two deserves a proper end-of-year night — our packages start small.'},
+      {id:'cougars',name:'Casey Cougars Basketball Club',suburb:'Narre Warren',type:'Sports club',ind:'Sport & recreation',size:'M',contact:'named',contactName:'Dana Okafor',role:'Club Secretary',email:'secretary@caseycougars.org.au',phone:'0402 118 664',web:'caseycougars.org.au',abn:'70 441 902 385',entity:'Casey Cougars Basketball Club Inc.',addr:'Narre Warren VIC 3805',drive:'12 min',fit:66,why:'Junior and senior squads — presentation night and team celebration fit',stage:'Potential',last:'Note added 10 Jul',summary:'Community basketball club, 14 junior and 4 senior teams. Runs an annual presentation night for ~200 people.',hook:'Presentation season is coming — we do club nights where the courts do the talking: VR, laser tag and party rooms for squads of any size.'},
+      {id:'clydeosteo',name:'Clyde North Osteopathy',suburb:'Clyde North',type:'Osteopath',ind:'Health',size:'S',contact:'phone',phone:'(03) 5991 2038',web:'clydenorthosteo.com.au',abn:'85 226 990 143',entity:'Clyde North Osteopathy Pty Ltd',addr:'Shop 3, 10 Selandra Blvd, Clyde North VIC 3978',drive:'10 min',fit:63,why:'Solo practitioner with 2 support staff — marginal fit',stage:'Selected',last:'Selected 5 Jul',summary:'Single-practitioner clinic with two reception staff.',hook:'A small-team celebration close to home — group packages from 8 people.'},
+      {id:'fag',name:'Frankston Auto Group',suburb:'Frankston',type:'Car dealership',ind:'Retail',size:'L',contact:'email',email:'reception@frankstonauto.com.au',phone:'(03) 9784 5500',web:'frankstonauto.com.au',abn:'36 118 664 209',entity:'Frankston Auto Group Pty Ltd',addr:'400 Nepean Hwy, Frankston VIC 3199',drive:'24 min',fit:61,why:'Dealership, ~30 staff across sales and service — strong function fit',flag:'prev',prevNote:'Previously contacted (Mar 2026) — view history',stage:'Contacted',last:'Emailed 8 Jul',summary:'Multi-brand dealership with ~30 staff across sales, service and parts. Contacted in March for the autumn promotion; no reply.',hook:'Sales versus service laser tag — the grudge match your workshop has been waiting for, plus party rooms for the whole dealership.'},
+      {id:'rsl',name:'Dandenong RSL',suburb:'Dandenong',type:'Club',ind:'Hospitality',size:'L',contact:'email',email:'events@dandenongrsl.com.au',phone:'(03) 9792 1535',web:'dandenongrsl.com.au',abn:'50 004 561 883',entity:'Dandenong RSL Sub-branch Inc.',addr:'44 Clow St, Dandenong VIC 3175',drive:'19 min',fit:58,why:'Runs its own function rooms — likely a competitor for events',stage:'Opened',last:'Opened 8 Jul',summary:'Large RSL club with bistro, gaming and function spaces, ~40 staff.',hook:'Your team hosts functions all year — for your own staff night, come somewhere nobody has to work the room.'},
+      {id:'sandhurst',name:'Sandhurst Signs',suburb:'Cranbourne West',type:'Signwriter',ind:'Trades',size:'S',contact:'email',email:'jobs@sandhurstsigns.com.au',phone:'0417 300 281',web:'sandhurstsigns.com.au',abn:'62 909 114 758',entity:'Sandhurst Signs Pty Ltd',addr:'Unit 9, 4 Fleet St, Cranbourne West VIC 3977',drive:'3 min',fit:55,why:'Owner asked not to be contacted',flag:'dnc',stage:'Not interested',last:'Unsubscribed 14 Jun',summary:'Two-person signwriting workshop.',hook:''}
+    ];
+    this.extraContacts = {
+      stepz:[{n:'Sarah Nguyen',r:'Studio Manager',e:'sarah@stepzdance.com.au',p:'(03) 9702 4418'},{n:'Jack Fielding',r:'Owner',e:'jack@stepzdance.com.au',p:'0412 883 921'}],
+      southside:[{n:'Marcus Bellini',r:'Director',e:'marcus@southsideproperty.com.au',p:'(03) 5991 7744'},{n:'Priya Shah',r:'Office Manager',e:'priya@southsideproperty.com.au'}],
+      cougars:[{n:'Dana Okafor',r:'Club Secretary',e:'secretary@caseycougars.org.au',p:'0402 118 664'}],
+      harcourt:[{n:'Tom Harcourt',r:'Partner',e:'tom@harcourtvine.com.au',p:'(03) 5995 2280'}]
+    };
+    this.promoMembers = {holiday:['stepz','sprouts','cmps','cougars'], team:['harcourt','southside','ironbark','fag']};
+    const sel = {}; this.biz.forEach(b => { if(b.flag!=='dnc' && !b.flag && b.fit>=61) sel[b.id]=true; });
+    const approved = {}; ['stepz','harcourt','southside','ironbark','sprouts','duke','cmps','bayside'].forEach(id => approved[id]=true);
+    this.state = {
+      screen:'dashboard', drawer:null, noteDraft:'', notes:{}, reminders:{}, stageOv:{},
+      tab:'timeline', noteMode:'quick', noteHead:'', noteBody:'', expNotes:{},
+      detNotes:{stepz:[{h:'Spoke to Sarah, call back in August',b:'Sarah is keen but Term 4 concert prep runs to late July. She suggested talking to Jack Fielding (owner) about budget sign-off before locking a date. Call week of 4 Aug.',d:'10 Jul',by:'Jess'}]},
+      remOpen:false, remDate:'', remTime:'', dncConfirm:false, dncAdded:{},
+      contactsAdd:{}, primaryOv:{}, contactInput:'', cRole:'', cEmail:'', cPhone:'', addContactOpen:false, audInput:'',
+      promos:[
+        {id:'xmas',name:'Christmas Corporate Parties',status:'Active',desc:'Exclusive-use party areas, catering and group rates for end-of-year functions.',targets:12,sent:23,opened:14,clicked:6,replied:3},
+        {id:'holiday',name:'School Holiday Group Deals',status:'Active',desc:'Weekday group rates for schools, clubs and care programs these holidays.',targets:18,sent:30,opened:19,clicked:8,replied:5},
+        {id:'team',name:'Weekday Team Building',status:'Draft',desc:'Off-peak team-building sessions — VR challenges and laser tag leagues.',targets:0,sent:0,opened:0,clicked:0,replied:0}
+      ],
+      promo:'xmas',
+      wizOpen:false, wizStep:1, wizName:'', wizDesc:'', wizPointInput:'', wizEditId:null, sizeInfo:false,
+      wizPoints:[
+        {label:'Exclusive-use party rooms',on:true,ai:true},{label:'VR + laser tag group packages',on:true,ai:true},
+        {label:'Catering & drinks options',on:true,ai:true},{label:'Group rates for 10+',on:false,ai:true},
+        {label:'Weeknight availability in December',on:false,ai:true}
+      ],
+      wizAud:[
+        {label:'Offices & professional firms',hint:'accounting, legal, real estate, agencies',on:true},
+        {label:'Sports clubs & teams',hint:'presentation nights, season wrap-ups',on:true},
+        {label:'Schools & childcare centres',hint:'staff celebrations, not student groups',on:true},
+        {label:'Hospitality venues',hint:'staff parties outside their own venue',on:false},
+        {label:'Trades & crews',hint:'small-team Christmas dos',on:false}
+      ],
+      locMode:'distance', dist:20,
+      venues:[{n:'Game On Cranbourne West',a:'14 Marriott Waters Bvd, Cranbourne West VIC 3977'},{n:'Game On Frankston',a:'88 Wells St, Frankston VIC 3199'}],
+      primaryVen:0, venueSel:null, venName:'', venAddr:'', areaInput:'',
+      sizeMode:'bands', staffMin:5, staffMax:50,
+      areas:{'Cranbourne':true,'Clyde North':true,'Berwick':true,'Narre Warren':false,'Frankston':false,'Dandenong':false,'Pakenham':false,'Melbourne CBD':false},
+      typeQ:'',
+      types:{'Dance school':true,'Gym':true,'Childcare centre':true,'Real estate agency':true,'Accounting firm':true,'Pub':true,'Sports club':true,'Primary school':true,'Plumber':false,'Florist':false,'Physiotherapist':false,'Café':false,'Hair salon':false,'Vet clinic':false},
+      inds:{'Hospitality':true,'Education':true,'Professional services':true,'Health':true,'Trades':false,'Retail':false,'Sport & recreation':true},
+      sizes:{S:true,M:true,L:true},
+      searching:false,
+      sel, approved, copySel:'stepz', editing:false, editText:'', editSub:'', overrides:{}, regen:{}, queued:false,
+      stageF:null, listF:null,
+      shortSort:'fit', shortDir:-1, fType:'All', fSize:'All', fContact:'All',
+      pipeSel:{promo:{},ind:{},area:{},size:{},act:{}}, openF:null
+    };
+  }
+
+  go(s){ this.setState({screen:s, drawer:null}); }
+  openLead(id){ this.setState({drawer:id, noteDraft:'', tab:'timeline', noteMode:'quick', remOpen:false, dncConfirm:false, noteHead:'', noteBody:'', contactInput:'', cRole:'', cEmail:'', cPhone:'', addContactOpen:false}); }
+  stageOf(b){ return this.state.stageOv[b.id] || b.stage; }
+
+  stageChip(stage){
+    const m = {
+      'New':       ['#6C757D','#F4F6FA','#9AA5B1'],
+      'Selected':  ['#303964','rgba(10,22,40,0.06)','#303964'],
+      'Contacted': ['#00775f','rgba(0,194,168,0.10)','#00C2A8'],
+      'Opened':    ['#00775f','rgba(0,194,168,0.10)','#00C2A8'],
+      'Clicked':   ['#00775f','rgba(0,194,168,0.16)','#00a891'],
+      'Replied':   ['#0E8A63','rgba(14,138,99,0.10)','#0E8A63'],
+      'Potential': ['#9A5B00','rgba(255,170,0,0.12)','#E8960C'],
+      'Booked':    ['#0E8A63','rgba(14,138,99,0.14)','#0E8A63'],
+      'Not interested':['#C03530','rgba(192,53,48,0.08)','#C03530']
+    };
+    const x = m[stage] || m['New'];
+    return {
+      stageLabel: stage,
+      stageCss: 'display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:100px;padding:3px 10px;white-space:nowrap;color:'+x[0]+';background:'+x[1],
+      dotCss: 'width:6px;height:6px;border-radius:50%;flex:none;background:'+x[2]
+    };
+  }
+  fitCss(f){
+    const x = f>=80 ? ['#0E8A63','rgba(14,138,99,0.10)'] : f>=65 ? ['#00775f','rgba(0,194,168,0.12)'] : ['#9A5B00','rgba(255,170,0,0.12)'];
+    return 'display:inline-flex;align-items:center;justify-content:center;min-width:38px;font-size:12.5px;font-weight:700;border-radius:100px;padding:3px 9px;color:'+x[0]+';background:'+x[1];
+  }
+
+  iconEl(k){
+    const p = {
+      search:'<circle cx="6.3" cy="6.3" r="3.8"/><path d="m9.2 9.2 2.8 2.8"/>',
+      flag:'<path d="M3.5 12.5V2.5h7L8.8 5l1.7 2.5h-7"/>',
+      mail:'<rect x="1.8" y="3.2" width="10.4" height="7.6" rx="1.2"/><path d="m2.2 4 4.8 3.6L11.8 4"/>',
+      open:'<path d="M1.5 7s2-3.8 5.5-3.8S12.5 7 12.5 7s-2 3.8-5.5 3.8S1.5 7 1.5 7Z"/><circle cx="7" cy="7" r="1.6"/>',
+      click:'<path d="M4 2.5 10.5 8l-2.8.5 1.6 3-1.5.7-1.6-3-2 2Z"/>',
+      reply:'<path d="M5.5 3 2 6.5 5.5 10"/><path d="M2 6.5h6a4 4 0 0 1 4 4v1"/>',
+      note:'<path d="m9.5 2 2.5 2.5-6.5 6.5-3 .5.5-3Z"/>',
+      rem:'<path d="M7 2a3.6 3.6 0 0 1 3.6 3.6c0 2.7 1 3.4 1 3.4H2.4s1-.7 1-3.4A3.6 3.6 0 0 1 7 2Z"/><path d="M5.8 11.2a1.3 1.3 0 0 0 2.4 0"/>',
+      dnc:'<rect x="3" y="6" width="8" height="5.5" rx="1.2"/><path d="M4.8 6V4.6a2.2 2.2 0 0 1 4.4 0V6"/>',
+      book:'<rect x="2" y="3" width="10" height="9" rx="1.2"/><path d="M2 5.8h10M4.8 2v2M9.2 2v2"/><path d="m5.2 8.6 1.3 1.3 2.4-2.4"/>',
+      phone:'<path d="M3 2.5h2.2l1 2.6-1.3 1a7.5 7.5 0 0 0 3 3l1-1.3 2.6 1V11a1.5 1.5 0 0 1-1.6 1.5A9.9 9.9 0 0 1 1.5 4.1 1.5 1.5 0 0 1 3 2.5Z"/>'
+    };
+    return React.createElement('svg',{width:12,height:12,viewBox:'0 0 14 14',fill:'none',stroke:'currentColor',strokeWidth:1.4,strokeLinecap:'round',strokeLinejoin:'round',dangerouslySetInnerHTML:{__html:p[k]||p.search}});
+  }
+  iconCat(k){
+    if(k==='reply'||k==='book') return ['#0E8A63','rgba(14,138,99,0.12)'];
+    if(k==='note'||k==='rem') return ['#9A5B00','rgba(255,170,0,0.16)'];
+    if(k==='dnc') return ['#C03530','rgba(192,53,48,0.10)'];
+    if(k==='mail'||k==='open'||k==='click'||k==='phone') return ['#00775f','rgba(0,194,168,0.14)'];
+    return ['#6C757D','#EEF1F6'];
+  }
+  contactsOf(b){
+    return (this.extraContacts[b.id]||(b.contactName?[{n:b.contactName,r:b.role}]:[])).concat(this.state.contactsAdd[b.id]||[]);
+  }
+  actOf(b){
+    const l=b.last.toLowerCase();
+    if(l.indexOf('h ago')>=0||l.indexOf('today')>=0) return 'Today';
+    if(l.indexOf('yesterday')>=0||/(8|9|10|11) jul/.test(l)) return 'This week';
+    return 'Older';
+  }
+  docsOf(b){
+    const S=this.state, rank={'New':0,'Selected':1,'Contacted':2,'Opened':3,'Clicked':4,'Replied':5,'Potential':2,'Booked':5,'Not interested':2}[this.stageOf(b)]||0;
+    const d=[];
+    (S.detNotes[b.id]||[]).forEach(n=>d.push({kind:'Note',title:n.h,meta:n.d+' · '+n.by,body:n.b}));
+    (S.notes[b.id]||[]).forEach(n=>d.push({kind:'Note',title:n,meta:'Today · you',body:''}));
+    if(rank>=2&&this.stageOf(b)!=='Not interested'){const dr=this.draft(b);d.push({kind:'Email',title:dr.sub,meta:'Sent 8 Jul · outreach email',body:dr.body});}
+    if(b.id==='stepz'){
+      d.push({kind:'Email',title:'Re: A Christmas party the Stepz team will actually talk about',meta:'From Sarah Nguyen · 10 Jul · pasted from inbox',body:'Hi Jess,\n\nThis looks great — our end-of-term concert wraps 19 Dec and the teaching team would love a proper night out.\n\nBest to talk to Jack Fielding (our owner) about dates and budget — he handles bookings. He is back Monday.\n\nSarah'});
+      d.push({kind:'File',title:'Term4-concert-schedule.pdf',meta:'Attached by Sarah Nguyen · 10 Jul · 240 KB',body:''});
+    } else if(rank>=5&&this.stageOf(b)!=='Booked'){
+      d.push({kind:'Email',title:'Re: '+this.draft(b).sub,meta:'Reply · 10 Jul · pasted from inbox',body:'Thanks — send through package details and December availability and we will take a look.'});
+    }
+    return d;
+  }
+  draft(b){
+    const ov = this.state.overrides[b.id];
+    if (ov) return ov;
+    const v = (this.state.regen[b.id] || 0) % 3;
+    const first = b.contactName ? b.contactName.split(' ')[0] : 'there';
+    const subs = [
+      'A Christmas party the '+b.name+' team will actually talk about',
+      'End-of-year celebration idea for '+b.name,
+      'December dates are going — group rates for '+b.name
+    ];
+    const openers = [
+      b.hook,
+      "Quick one — if you're starting to think about an end-of-year event for the team, we'd love "+b.name+' to see what a night at Game On looks like.',
+      'Most '+b.type.toLowerCase()+'s we talk to around '+b.suburb+' leave the Christmas booking too late — the good December dates go first.'
+    ];
+    const sizeLine = b.size==='L' ? ' for groups of 20 or more' : b.size==='M' ? ' for teams of 10–25' : ', starting from 8 people';
+    const body = 'Hi '+first+',\n\n'+openers[v]+"\n\nWe're Game On in Cranbourne West — VR arcade, karaoke rooms and laser tag under one roof, about "+b.drive+' from '+b.suburb+'. Our Christmas corporate packages include exclusive-use party areas, catering and drinks options, and group rates'+sizeLine+'.\n\nIf a night like that could work for your team, just reply here or pick a time that suits: gameonec.com.au/corporate\n\nJess Carter\nEvents & group bookings — Game On Entertainment Centre\n14 Marriott Waters Bvd, Cranbourne West VIC 3977 · (03) 5990 4820\n\nYou\'re receiving this because '+b.name+" publishes its contact details publicly. Don't want to hear from us? Unsubscribe (one click) — we'll never email you again.";
+    return { sub: subs[v], body };
+  }
+
+  timeline(b){
+    const S=this.state; let t;
+    if (b.id==='stepz'){
+      t = [
+        {d:'3 Jul',t:'Found in search',k:'search'},
+        {d:'5 Jul',t:'Selected for "Christmas Corporate Parties"',k:'flag'},
+        {d:'8 Jul',t:'Emailed Sarah Nguyen — "A Christmas party the Stepz team will actually talk about"',k:'mail',link:'View email'},
+        {d:'8 Jul',t:'Opened by Sarah Nguyen',k:'open'},
+        {d:'9 Jul',t:'Sarah clicked "corporate events"',k:'click'},
+        {d:'10 Jul',t:'Sarah replied — "best to talk to Jack Fielding about dates"',k:'reply',link:'View reply'}
+      ];
+      const dn=(S.detNotes.stepz||[])[0];
+      if(dn) t.push({d:dn.d,k:'note',head:dn.h,body:dn.b});
+      t.push({d:'11 Jul',t:'Emailed Jack Fielding — package details and December availability',k:'mail',link:'View email'});
+      t.push({d:'4 Aug',t:'Reminder — follow-up call with Jack Fielding',k:'rem'});
+    } else {
+      const rank = {'New':0,'Selected':1,'Contacted':2,'Opened':3,'Clicked':4,'Replied':5,'Potential':2,'Booked':5,'Not interested':2}[this.stageOf(b)] || 0;
+      t = [{d:'3 Jul',t:'Found in search',k:'search'}];
+      if (b.flag==='prev') t.unshift({d:'12 Mar',t:'Emailed — autumn promotion (no reply)',k:'mail',link:'View email'});
+      if (rank>=1) t.push({d:'5 Jul',t:'Selected for "Christmas Corporate Parties"',k:'flag'});
+      if (rank>=2 && this.stageOf(b)!=='Not interested') t.push({d:'8 Jul',t:'Emailed — "'+this.draft(b).sub+'"',k:'mail',link:'View email'});
+      if (rank>=3) t.push({d:'8 Jul',t:'Opened',k:'open'});
+      if (rank>=4) t.push({d:'9 Jul',t:'Clicked "corporate events"',k:'click'});
+      if (rank>=5) t.push({d:'10 Jul',t:'Replied',k:'reply',link:'View reply'});
+      if (this.stageOf(b)==='Potential') t.push({d:'10 Jul',t:'Marked as potential',k:'note'});
+      if (this.stageOf(b)==='Booked') t.push({d:'11 Jul',t:'Booked — staff Christmas party, 40 pax, Fri 18 Dec',k:'book'});
+      if (this.stageOf(b)==='Not interested' && b.flag==='dnc') t.push({d:'14 Jun',t:'Unsubscribed via link — added to do-not-contact',k:'dnc'});
+      if (this.state.dncAdded[b.id]) t.push({d:'Today',t:'Added to do-not-contact — manual',k:'dnc'});
+    }
+    (S.detNotes[b.id]||[]).forEach((n,i) => { if(b.id==='stepz'&&i===0) return; t.push({d:n.d,k:'note',head:n.h,body:n.b}); });
+    (S.notes[b.id]||[]).forEach(n => t.push({d:'Today',k:'note',head:n}));
+    const rm=S.reminders[b.id];
+    if (rm) t.push({d:rm.date||'21 Jul',t:'Reminder set — follow up'+(rm.time?' at '+rm.time:''),k:'rem'});
+    return t;
+  }
+
+  renderVals(){
+    const S = this.state, me = this;
+    const limit = this.props.dailyLimit ?? 30, sentToday = 23;
+    const showWhy = this.props.showRationale ?? true;
+    const pct = Math.min(100, Math.round(sentToday/limit*100));
+
+    const nav = {};
+    [['dashboard','dash'],['promotions','promos'],['find','find'],['shortlist','short'],['copy','copy'],['pipeline','pipe'],['dnc','dnc'],['settings','settings']].forEach(pair => {
+      const k = pair[0], a = pair[1], on = S.screen===k;
+      nav[a] = { go:() => me.go(k),
+        css:'display:flex;align-items:center;gap:9px;font-size:13.5px;padding:8px 10px;border-radius:6px;cursor:pointer;transition:background 150ms,color 150ms;' + (on?'font-weight:600;color:#0A1628;background:rgba(0,194,168,0.08)':'font-weight:500;color:#6C757D') };
+    });
+    const is = {dashboard:S.screen==='dashboard',promotions:S.screen==='promotions',find:S.screen==='find',shortlist:S.screen==='shortlist',copy:S.screen==='copy',pipeline:S.screen==='pipeline',dnc:S.screen==='dnc',settings:S.screen==='settings'};
+    const emptyPipeSel = {promo:{},ind:{},area:{},size:{},act:{}};
+    const goStage = s => () => me.setState({screen:'pipeline', stageF:s, listF:null, pipeSel:emptyPipeSel, openF:null});
+
+    const row = b => Object.assign({}, b, this.stageChip(this.stageOf(b)), {
+      open:(e) => { if(e&&e.stopPropagation)e.stopPropagation(); me.openLead(b.id); },
+      fitStyle:this.fitCss(b.fit), stageNow:this.stageOf(b), noRem:true
+    });
+
+    const remLabel = rm => 'Reminder — '+(rm.date||'21 Jul')+(rm.time?' '+rm.time:'');
+    const remBadge = 'display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#9A5B00;background:rgba(255,170,0,0.12);border-radius:100px;padding:2px 10px;white-space:nowrap';
+    const queueIds = ['stepz','ironbark','harcourt','sprouts'];
+    const queueRows = queueIds.map(id => {
+      const r = row(this.biz.find(b => b.id===id));
+      if (S.reminders[id]) { r.last = remLabel(S.reminders[id]); r.hasRem = true; r.noRem = false; r.remCss = remBadge; }
+      return r;
+    });
+    Object.keys(S.reminders).forEach(id => {
+      if (queueIds.indexOf(id)>=0) return;
+      const b = this.biz.find(x => x.id===id); if(!b) return;
+      const r = row(b);
+      r.last = remLabel(S.reminders[id]); r.hasRem = true; r.noRem = false; r.remCss = remBadge;
+      queueRows.push(r);
+    });
+
+    const promoCards = S.promos.map(pr => Object.assign({}, pr, {
+      chipCss:'display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:100px;padding:3px 10px;' + (pr.status==='Active'?'color:#0E8A63;background:rgba(14,138,99,0.10)':'color:#9A5B00;background:rgba(255,170,0,0.12)'),
+      dotCss:'width:6px;height:6px;border-radius:50%;background:' + (pr.status==='Active'?'#0E8A63':'#E8960C'),
+      find:() => me.setState({promo:pr.id, screen:'find'}),
+      isDraft:pr.status==='Draft',
+      edit:() => me.setState({wizOpen:true, wizStep:1, wizEditId:pr.id, wizName:pr.name, wizDesc:pr.desc==='—'?'':pr.desc, wizPointInput:''}),
+      publish:() => me.setState({promos:S.promos.map(p => p.id===pr.id?Object.assign({},p,{status:'Active'}):p)})
+    }));
+    const openWizard = () => me.setState({wizOpen:true, wizStep:1, wizEditId:null, wizName:'', wizDesc:'', wizPointInput:''});
+
+    const wizNext = () => me.setState({wizStep:Math.min(3,S.wizStep+1)});
+    const wizBack = () => me.setState({wizStep:Math.max(1,S.wizStep-1)});
+    const wizClose = () => me.setState({wizOpen:false});
+    const wizFinish = () => me.setState({
+      wizOpen:false, screen:'promotions',
+      promos: S.wizEditId
+        ? S.promos.map(p => p.id===S.wizEditId?Object.assign({},p,{name:S.wizName||p.name, desc:S.wizDesc||p.desc}):p)
+        : S.promos.concat([{id:'p'+Date.now(),name:S.wizName||'Untitled promotion',status:'Draft',desc:S.wizDesc||'—',targets:0,sent:0,opened:0,clicked:0,replied:0}])
+    });
+    const chipCss = on => 'font-family:inherit;font-size:13px;padding:6px 13px;border-radius:100px;cursor:pointer;transition:border-color 150ms;' + (on?'background:rgba(0,194,168,0.10);border:1.5px solid rgba(0,194,168,0.45);color:#00775f;font-weight:600':'background:#fff;border:1.5px solid #E8ECF0;color:#0A1628;font-weight:500');
+    const wizPoints = S.wizPoints.map((c,i) => Object.assign({}, c, {css:chipCss(c.on), toggle:() => { const w=S.wizPoints.slice(); w[i]=Object.assign({},c,{on:!c.on}); me.setState({wizPoints:w}); }}));
+    const wizAud = S.wizAud.map((c,i) => Object.assign({}, c, {
+      css:'display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:10px;cursor:pointer;transition:border-color 150ms;text-align:left;' + (c.on?'background:rgba(0,194,168,0.06);border:1.5px solid rgba(0,194,168,0.45)':'background:#fff;border:1.5px solid #E8ECF0'),
+      tickCss:'width:18px;height:18px;border-radius:4px;flex:none;margin-top:1px;display:inline-flex;align-items:center;justify-content:center;' + (c.on?'background:#00C2A8':'background:#fff;border:1.5px solid #D6DCE3'),
+      toggle:() => { const w=S.wizAud.slice(); w[i]=Object.assign({},c,{on:!c.on}); me.setState({wizAud:w}); }
+    }));
+    const addWizPoint = () => { if(!S.wizPointInput.trim()) return; me.setState({wizPoints:S.wizPoints.concat([{label:S.wizPointInput.trim(),on:true,ai:false}]), wizPointInput:''}); };
+    const addWizAud = () => { if(!S.audInput.trim()) return; me.setState({wizAud:S.wizAud.concat([{label:S.audInput.trim(),hint:'custom audience',on:true}]), audInput:''}); };
+    const wizPointsOn = S.wizPoints.filter(c => c.on).map(c => c.label).join('  ·  ') || '—';
+    const wizAudOn = S.wizAud.filter(c => c.on).map(c => c.label).join('  ·  ') || '—';
+    const stepDot = n => 'width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;flex:none;' + (S.wizStep>=n?'background:#00C2A8;color:#0A1628':'background:#F4F6FA;border:1.5px solid #E8ECF0;color:#6C757D');
+
+    const curPromo = S.promos.find(p => p.id===S.promo) || S.promos[0];
+    const setPromo = e => me.setState({promo:e.target.value});
+    const locBtn = m => 'font-family:inherit;font-size:13px;font-weight:600;padding:7px 16px;border-radius:100px;cursor:pointer;border:none;transition:background 150ms;' + (S.locMode===m?'background:#0A1628;color:#fff':'background:transparent;color:#6C757D');
+    const areaChips = Object.keys(S.areas).map(k => ({label:k, css:chipCss(S.areas[k]), toggle:() => { const a=Object.assign({},S.areas); a[k]=!a[k]; me.setState({areas:a}); }}));
+    const typeChips = Object.keys(S.types).filter(k => !S.typeQ || k.toLowerCase().indexOf(S.typeQ.toLowerCase())>=0).map(k => ({label:k, css:chipCss(S.types[k]), toggle:() => { const a=Object.assign({},S.types); a[k]=!a[k]; me.setState({types:a}); }}));
+    const indChips = Object.keys(S.inds).map(k => ({label:k, css:chipCss(S.inds[k]), toggle:() => { const a=Object.assign({},S.inds); a[k]=!a[k]; me.setState({inds:a}); }}));
+    const sizeChips = ['S','M','L'].map(k => ({label:k, css:'font-family:inherit;font-size:13px;font-weight:600;width:46px;padding:7px 0;text-align:center;border-radius:6px;cursor:pointer;transition:border-color 150ms;' + (S.sizes[k]?'background:rgba(0,194,168,0.10);border:1.5px solid rgba(0,194,168,0.45);color:#00775f':'background:#fff;border:1.5px solid #E8ECF0;color:#0A1628'), toggle:() => { const a=Object.assign({},S.sizes); a[k]=!a[k]; me.setState({sizes:a}); }}));
+    const typeCount = Object.keys(S.types).filter(k => S.types[k]).length;
+    const runSearch = () => { me.setState({searching:true}); setTimeout(() => me.setState({searching:false, screen:'shortlist'}), 900); };
+    const venues = S.venues, primIdx = Math.min(S.primaryVen, venues.length-1);
+    const venueVal = S.venueSel==null ? primIdx : Math.min(S.venueSel, venues.length-1);
+    const venueOpts = venues.map((v,i) => ({v:String(i), label:v.n + (i===primIdx?' (primary)':'')}));
+    const setVenue = e => me.setState({venueSel:+e.target.value});
+    const venueLine = venues[venueVal] ? venues[venueVal].a : '';
+    const addArea = () => { const v=S.areaInput.trim(); if(!v) return; const a=Object.assign({},S.areas); if(!(v in a)) a[v]=true; me.setState({areas:a, areaInput:''}); };
+    const sizeSeg = m => 'font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:100px;cursor:pointer;border:none;transition:background 150ms;'+(S.sizeMode===m?'background:#0A1628;color:#fff':'background:transparent;color:#6C757D');
+    const staffLabel = S.staffMin+'–'+(S.staffMax>=100?'100+':S.staffMax)+' staff';
+    const venRows = venues.map((v,i) => ({n:v.n, a:v.a, isPrimary:i===primIdx, notPrimary:i!==primIdx,
+      makePrimary:() => me.setState({primaryVen:i, venueSel:null}),
+      remove:() => { const vs=venues.filter((x,j)=>j!==i); me.setState({venues:vs, primaryVen:i<primIdx?primIdx-1:(i===primIdx?0:primIdx), venueSel:null}); }}));
+    const addVen = () => { const n=S.venName.trim(); if(!n) return; me.setState({venues:venues.concat([{n, a:S.venAddr.trim()||'—'}]), venName:'', venAddr:''}); };
+    const areasManage = Object.keys(S.areas).map(k => ({label:k, remove:() => { const a=Object.assign({},S.areas); delete a[k]; me.setState({areas:a}); }}));
+
+    const sizeOrd = {S:1,M:2,L:3};
+    let shortBiz = this.biz.filter(b => (S.fType==='All'||b.type===S.fType) && (S.fSize==='All'||b.size===S.fSize) && (S.fContact==='All'||b.contact===S.fContact.toLowerCase()));
+    shortBiz = shortBiz.slice().sort((a,b) => {
+      const k=S.shortSort;
+      const x = k==='fit' ? a.fit-b.fit : k==='size' ? sizeOrd[a.size]-sizeOrd[b.size] : String(a[k]||'').localeCompare(String(b[k]||''));
+      return x*S.shortDir;
+    });
+    const sortBy = k => me.setState({shortSort:k, shortDir:S.shortSort===k?-S.shortDir:(k==='fit'?-1:1)});
+    const hLab = (k,label) => label + (S.shortSort===k ? (S.shortDir<0?' ↓':' ↑') : '');
+    const typeSet = {}; this.biz.forEach(b => typeSet[b.type]=1);
+    const shortTypeOpts = ['All'].concat(Object.keys(typeSet).sort());
+    const shortRows = shortBiz.map(b => {
+      const r = row(b);
+      r.isDnc = b.flag==='dnc'; r.isPrev = b.flag==='prev'; r.notDnc = b.flag!=='dnc';
+      r.sel = !!S.sel[b.id] && !r.isDnc;
+      r.why = showWhy ? b.why : null;
+      r.cEmail = b.contact==='email'; r.cNamed = b.contact==='named'; r.cPhone = b.contact==='phone';
+      r.contactTip = b.contact==='named' ? 'Named contact — '+b.contactName : b.contact==='email' ? 'Email found — '+b.email : 'Phone only — no published email';
+      r.sizeBadge = 'display:inline-flex;align-items:center;justify-content:center;width:26px;height:22px;border-radius:5px;font-size:11.5px;font-weight:700;background:#F4F6FA;border:1px solid #E8ECF0;color:#6C757D';
+      r.rowCss = 'display:grid;grid-template-columns:40px 2.4fr 1.1fr 52px 60px 64px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F4F6FA;cursor:pointer;transition:background 150ms;' + (r.isDnc?'opacity:0.45':r.sel?'background:rgba(0,194,168,0.035)':'');
+      r.boxCss = 'width:18px;height:18px;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex:none;transition:background 150ms;' + (r.sel?'background:#00C2A8':'background:#fff;border:1.5px solid #D6DCE3');
+      r.toggle = e => { e.stopPropagation(); if(r.isDnc) return; const s=Object.assign({},S.sel); s[b.id]=!s[b.id]; me.setState({sel:s}); };
+      return r;
+    });
+    const selCount = this.biz.filter(b => S.sel[b.id] && b.flag!=='dnc').length;
+    const addToCampaign = () => { const first = this.biz.find(b => S.sel[b.id] && b.flag!=='dnc'); me.setState({screen:'copy', copySel:first?first.id:null}); };
+
+    const targets = this.biz.filter(b => S.sel[b.id] && b.flag!=='dnc');
+    const copyTargets = targets.map(b => Object.assign({}, b, {
+      ok:!!S.approved[b.id],
+      css:'display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;transition:background 150ms;border-left:2.5px solid ' + (S.copySel===b.id?'#00C2A8;background:rgba(0,194,168,0.07)':'transparent'),
+      nameCss:'font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;' + (S.copySel===b.id?'font-weight:600':'font-weight:500'),
+      pick:() => me.setState({copySel:b.id, editing:false})
+    }));
+    const cur = targets.find(b => b.id===S.copySel) || targets[0] || this.biz[0];
+    const curDraft = this.draft(cur);
+    const approvedCount = targets.filter(b => S.approved[b.id]).length;
+    const curOk = !!S.approved[cur.id];
+    const approveCur = () => {
+      const a = Object.assign({}, S.approved); a[cur.id]=true;
+      const i = targets.findIndex(b => b.id===cur.id);
+      const nxt = targets.find((b,j) => j>i && !a[b.id]) || targets.find(b => !a[b.id]);
+      me.setState({approved:a, copySel:nxt?nxt.id:cur.id, editing:false});
+    };
+    const regenCur = () => { const rg=Object.assign({},S.regen); rg[cur.id]=(rg[cur.id]||0)+1; const ov=Object.assign({},S.overrides); delete ov[cur.id]; me.setState({regen:rg, overrides:ov, editing:false}); };
+    const editCur = () => me.setState({editing:true, editSub:curDraft.sub, editText:curDraft.body});
+    const saveEdit = () => { const ov=Object.assign({},S.overrides); ov[cur.id]={sub:S.editSub, body:S.editText}; me.setState({editing:false, overrides:ov}); };
+    const cancelEdit = () => me.setState({editing:false});
+    const approveAll = () => { const a={}; targets.forEach(b => a[b.id]=true); me.setState({approved:a, queued:true}); };
+
+    const stages = ['New','Selected','Contacted','Opened','Clicked','Replied','Potential','Booked','Not interested'];
+    const counts = {}; this.biz.forEach(b => { const s=this.stageOf(b); counts[s]=(counts[s]||0)+1; });
+    const stageStrip = stages.map((s,i) => ({label:s, count:counts[s]||0, hasArrow:i<stages.length-1,
+      css:'display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;cursor:pointer;border-radius:8px;flex:1;min-width:0;transition:background 150ms;' + (S.stageF===s?'background:rgba(0,194,168,0.10);box-shadow:inset 0 0 0 1.5px rgba(0,194,168,0.5)':''),
+      numCss:'font-size:19px;font-weight:700;letter-spacing:-0.02em;line-height:1;' + ((counts[s]||0)===0?'color:#C6CDD5':'color:#0A1628'),
+      toggle:() => me.setState({stageF:S.stageF===s?null:s, listF:null})
+    }));
+    const listSets = {warm:['southside','ironbark','stepz','harcourt'], pot:['cougars'], stale:['peninsula','bloom','cmps','clydeosteo']};
+    const listNames = {warm:'Warm leads', pot:'Potentials', stale:'No contact 30+ days'};
+    const savedLists = ['warm','pot','stale'].map(k => ({label:listNames[k], count:listSets[k].length,
+      css:'display:flex;align-items:center;gap:8px;font-size:13px;padding:7px 10px;border-radius:6px;cursor:pointer;transition:background 150ms;' + (S.listF===k?'font-weight:600;color:#0A1628;background:rgba(0,194,168,0.08)':'font-weight:500;color:#6C757D'),
+      toggle:() => me.setState({listF:S.listF===k?null:k, stageF:null})
+    }));
+    const allListCss = 'display:flex;align-items:center;gap:8px;font-size:13px;padding:7px 10px;border-radius:6px;cursor:pointer;transition:background 150ms;' + (!S.listF&&!S.stageF?'font-weight:600;color:#0A1628;background:rgba(0,194,168,0.08)':'font-weight:500;color:#6C757D');
+    const clearFilters = () => me.setState({listF:null, stageF:null, pipeSel:emptyPipeSel, openF:null});
+    const uniqVals = f => { const s={}; this.biz.forEach(b => s[f(b)]=1); return Object.keys(s).sort(); };
+    const filterDefs = [
+      {key:'promo', label:'Promotion', opts:S.promos.map(p => ({v:p.id, label:p.name}))},
+      {key:'ind', label:'Industry', opts:uniqVals(b => b.ind).map(v => ({v, label:v}))},
+      {key:'area', label:'Area', opts:uniqVals(b => b.suburb).map(v => ({v, label:v}))},
+      {key:'size', label:'Size', opts:[{v:'S',label:'S — 1–9 staff'},{v:'M',label:'M — 10–29 staff'},{v:'L',label:'L — 30+ staff'}]},
+      {key:'act', label:'Last activity', opts:[{v:'Today',label:'Today'},{v:'This week',label:'This week'},{v:'Older',label:'Older'}]}
+    ];
+    const pipeFilters = filterDefs.map(f => {
+      const sel = S.pipeSel[f.key]||{}; const picked = f.opts.filter(o => sel[o.v]); const n = picked.length;
+      return {
+        btnLabel: f.label+': '+(n===0?'All':n===1?picked[0].label:n+' selected'),
+        btnCss: 'font-family:inherit;font-size:13px;font-weight:'+(n?'600':'500')+';padding:7px 12px;border:1.5px solid '+(n?'rgba(0,194,168,0.45)':'#E8ECF0')+';border-radius:6px;background:#fff;color:'+(n?'#00775f':'#6C757D')+';cursor:pointer;white-space:nowrap',
+        open: S.openF===f.key,
+        toggleOpen:() => me.setState({openF:S.openF===f.key?null:f.key}),
+        clear:() => { const ps=Object.assign({},S.pipeSel); ps[f.key]={}; me.setState({pipeSel:ps}); },
+        allCss: 'display:flex;align-items:center;font-size:13px;padding:6px 10px;border-radius:6px;cursor:pointer;'+(n===0?'font-weight:600;background:rgba(0,194,168,0.08);color:#0A1628':'color:#6C757D'),
+        opts: f.opts.map(o => ({label:o.label, on:!!sel[o.v],
+          css:'display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 10px;border-radius:6px;cursor:pointer;white-space:nowrap;'+(sel[o.v]?'font-weight:600;color:#0A1628':'color:#303a4a'),
+          boxCss:'width:15px;height:15px;border-radius:4px;flex:none;display:inline-flex;align-items:center;justify-content:center;'+(sel[o.v]?'background:#00C2A8':'background:#fff;border:1.5px solid #D6DCE3'),
+          toggle:() => { const ps=Object.assign({},S.pipeSel); const c=Object.assign({},ps[f.key]); c[o.v]=!c[o.v]; ps[f.key]=c; me.setState({pipeSel:ps}); }
+        }))
+      };
+    });
+    const selOf = k => { const s=S.pipeSel[k]||{}; return Object.keys(s).filter(x => s[x]); };
+    let pipeBiz = this.biz.filter(b => {
+      const pr=selOf('promo'); if (pr.length && !pr.some(p => p==='xmas' || (me.promoMembers[p]||[]).indexOf(b.id)>=0)) return false;
+      const ind=selOf('ind'); if (ind.length && ind.indexOf(b.ind)<0) return false;
+      const ar=selOf('area'); if (ar.length && ar.indexOf(b.suburb)<0) return false;
+      const sz=selOf('size'); if (sz.length && sz.indexOf(b.size)<0) return false;
+      const ac=selOf('act'); if (ac.length && ac.indexOf(me.actOf(b))<0) return false;
+      return true;
+    });
+    if (S.stageF) pipeBiz = pipeBiz.filter(b => this.stageOf(b)===S.stageF);
+    if (S.listF) pipeBiz = pipeBiz.filter(b => listSets[S.listF].indexOf(b.id)>=0);
+    const pipeRows = pipeBiz.map(b => { const r=row(b); r.last = (S.stageOv[b.id]?'Updated just now':b.last); return r; });
+    const anyPipeSel = filterDefs.some(f => selOf(f.key).length>0);
+    const pipeLabel = S.stageF ? 'Stage: '+S.stageF : S.listF ? listNames[S.listF] : anyPipeSel ? 'Filtered' : 'All businesses';
+
+    const dLead = S.drawer ? this.biz.find(b => b.id===S.drawer) : null;
+    let drawer = null;
+    if (dLead) {
+      const allC = this.contactsOf(dLead);
+      const prim = S.primaryOv[dLead.id] || (allC[0]||{}).n;
+      const contacts = allC.map(c => ({n:c.n, r:c.r||'Contact', init:c.n.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase(),
+        detail:[c.e, c.p].filter(Boolean).join(' · ') || 'no direct contact details yet',
+        isPrimary:c.n===prim, notPrimary:c.n!==prim,
+        makePrimary:() => { const o=Object.assign({},S.primaryOv); o[dLead.id]=c.n; me.setState({primaryOv:o}); }}));
+      const docs = this.docsOf(dLead).map(x => Object.assign({}, x, {hasBody:!!x.body,
+        chipCss:'display:inline-flex;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;border-radius:100px;padding:2px 9px;flex:none;'+(x.kind==='Email'?'color:#00775f;background:rgba(0,194,168,0.12)':x.kind==='File'?'color:#303964;background:rgba(10,22,40,0.06)':'color:#9A5B00;background:rgba(255,170,0,0.14)')}));
+      const tabCss2 = on => 'font-size:13px;font-weight:600;padding:10px 2px;cursor:pointer;margin-bottom:-1px;border-bottom:2px solid '+(on?'#00C2A8;color:#0A1628':'transparent;color:#6C757D');
+      const segCss2 = on => 'font-family:inherit;font-size:12px;font-weight:600;padding:5px 12px;border-radius:100px;border:none;cursor:pointer;transition:background 150ms;'+(on?'background:#0A1628;color:#fff':'background:transparent;color:#6C757D');
+      drawer = Object.assign({}, dLead, this.stageChip(this.stageOf(dLead)), {
+        emailShow: dLead.email || 'No published email',
+        contacts, hasContacts:contacts.length>0, docs, docsCount:docs.length, hasDocs:docs.length>0,
+        tl: this.timeline(dLead).map((t,i,arr) => {
+          const cat = me.iconCat(t.k), key = dLead.id+'-'+i;
+          return {d:t.d, t:t.t, head:t.head, body:t.body, isNote:!!t.head, plain:!t.head,
+            hasLink:!!t.link, link:t.link, hasBody:!!t.body, expanded:!!S.expNotes[key],
+            toggleExp:() => { const e2=Object.assign({},S.expNotes); e2[key]=!e2[key]; me.setState({expNotes:e2}); },
+            icon: me.iconEl(t.k),
+            wrapCss:'width:22px;height:22px;border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center;position:relative;z-index:1;color:'+cat[0]+';background:'+cat[1],
+            lineCss:'position:absolute;left:10.5px;top:24px;bottom:-14px;width:1.5px;background:#E8ECF0;'+(i===arr.length-1?'display:none':'')};
+        }),
+        tabTimeline:S.tab==='timeline', tabDocs:S.tab==='docs',
+        tabTCss:tabCss2(S.tab==='timeline'), tabDCss:tabCss2(S.tab==='docs'),
+        goTabT:() => me.setState({tab:'timeline'}), goTabD:() => me.setState({tab:'docs'}),
+        modeQuick:S.noteMode==='quick', modeDet:S.noteMode==='detailed',
+        mQCss:segCss2(S.noteMode==='quick'), mDCss:segCss2(S.noteMode==='detailed'),
+        setModeQ:() => me.setState({noteMode:'quick'}), setModeD:() => me.setState({noteMode:'detailed'}),
+        addNote:() => { if(!S.noteDraft.trim()) return; const n=Object.assign({},S.notes); n[dLead.id]=(n[dLead.id]||[]).concat([S.noteDraft.trim()]); me.setState({notes:n, noteDraft:''}); },
+        addDetNote:() => { if(!S.noteHead.trim()) return; const n=Object.assign({},S.detNotes); n[dLead.id]=(n[dLead.id]||[]).concat([{h:S.noteHead.trim(), b:S.noteBody.trim(), d:'Today', by:'you'}]); me.setState({detNotes:n, noteHead:'', noteBody:''}); },
+        remOpen:S.remOpen, toggleRem:() => me.setState({remOpen:!S.remOpen}),
+        saveRem:() => { const r=Object.assign({},S.reminders); r[dLead.id]={date:S.remDate||'21 Jul', time:S.remTime}; me.setState({reminders:r, remOpen:false, remDate:'', remTime:''}); },
+        markPot:() => { const o=Object.assign({},S.stageOv); o[dLead.id]='Potential'; me.setState({stageOv:o}); },
+        markNot:() => { const o=Object.assign({},S.stageOv); o[dLead.id]='Not interested'; me.setState({stageOv:o}); },
+        dncConfirm:S.dncConfirm, notDncConfirm:!S.dncConfirm,
+        askDnc:() => me.setState({dncConfirm:true}), cancelDnc:() => me.setState({dncConfirm:false}),
+        confirmDnc:() => { const o=Object.assign({},S.stageOv); o[dLead.id]='Not interested'; const da=Object.assign({},S.dncAdded); da[dLead.id]=true; me.setState({stageOv:o, dncAdded:da, dncConfirm:false}); },
+        onDnc: !!S.dncAdded[dLead.id] || dLead.flag==='dnc', notOnDnc: !(S.dncAdded[dLead.id] || dLead.flag==='dnc'),
+        addContactOpen:S.addContactOpen, notAddContactOpen:!S.addContactOpen,
+        toggleAddContact:() => me.setState({addContactOpen:!S.addContactOpen}),
+        addContact:() => { const n=S.contactInput.trim(); if(!n) return; const c={n, r:S.cRole.trim()||'Contact'}; if(S.cEmail.trim()) c.e=S.cEmail.trim(); if(S.cPhone.trim()) c.p=S.cPhone.trim(); const a=Object.assign({},S.contactsAdd); a[dLead.id]=(a[dLead.id]||[]).concat([c]); me.setState({contactsAdd:a, contactInput:'', cRole:'', cEmail:'', cPhone:'', addContactOpen:false}); }
+      });
+    }
+    const closeDrawer = () => me.setState({drawer:null});
+
+    const dncRows = [];
+    this.biz.forEach(b => { if (S.dncAdded[b.id]) dncRows.push({name:b.name, type:b.type+' · '+b.suburb, reason:'Manual — added from lead detail', date:'18 Jul 2026'}); });
+    dncRows.push(
+      {name:'Sandhurst Signs', type:'Signwriter · Cranbourne West', reason:'Unsubscribed via link', date:'14 Jun 2026'},
+      {name:'Clarinda Park Function Centre', type:'Function venue · Cranbourne', reason:'Requested by reply', date:'2 Jun 2026'},
+      {name:'Botanic Ridge Wines', type:'Winery · Botanic Ridge', reason:'Manual', date:'28 May 2026'}
+    );
+
+    return {
+      nav, is,
+      limitLabel: sentToday+' of '+limit+' daily limit used today',
+      limitBarCss:'height:100%;border-radius:100px;background:#00C2A8;transition:width 300ms cubic-bezier(0.4,0,0.2,1);width:'+pct+'%',
+      queueRows,
+      promoCards, openWizard,
+      wizOpen:S.wizOpen, wizStep1:S.wizStep===1, wizStep2:S.wizStep===2, wizStep3:S.wizStep===3,
+      wizNotFirst:S.wizStep>1, wizNotLast:S.wizStep<3, stop:e => e.stopPropagation(),
+      wizName:S.wizName, wizDesc:S.wizDesc, wizPointInput:S.wizPointInput,
+      setWizName:e => me.setState({wizName:e.target.value}), setWizDesc:e => me.setState({wizDesc:e.target.value}),
+      setWizPointInput:e => me.setState({wizPointInput:e.target.value}),
+      wizPointKey:e => { if(e.key==='Enter') addWizPoint(); },
+      addWizPoint, wizPoints, wizAud, wizNext, wizBack, wizClose, wizFinish,
+      wizNameOut:S.wizName||'Untitled promotion', wizDescOut:S.wizDesc||'No description yet', wizPointsOn, wizAudOn,
+      wizTitle:S.wizEditId?'Edit promotion':'New promotion', wizFinishLabel:S.wizEditId?'Save changes':'Create promotion',
+      sizeInfo:S.sizeInfo, toggleSizeInfo:() => me.setState({sizeInfo:!S.sizeInfo}),
+      step1Css:stepDot(1), step2Css:stepDot(2), step3Css:stepDot(3),
+      wizNextCss:'font-family:inherit;font-size:14px;font-weight:600;padding:10px 22px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28);transition:opacity 150ms;' + (S.wizStep===1&&!S.wizName.trim()?'opacity:0.4;pointer-events:none':''),
+      promoName:curPromo.name, promoOpts:S.promos.map(p => ({v:p.id, label:p.name})), promoVal:S.promo, setPromo,
+      locDistCss:locBtn('distance'), locAreaCss:locBtn('areas'),
+      setLocDist:() => me.setState({locMode:'distance'}), setLocArea:() => me.setState({locMode:'areas'}),
+      isDist:S.locMode==='distance', isAreas:S.locMode==='areas',
+      dist:S.dist, distLabel:S.dist+' min drive', setDist:e => me.setState({dist:+e.target.value}),
+      areaChips, typeChips, indChips, sizeChips, typeCount,
+      typeQ:S.typeQ, setTypeQ:e => me.setState({typeQ:e.target.value}),
+      searching:S.searching, notSearching:!S.searching, runSearch,
+      searchBtnCss:'font-family:inherit;font-size:14px;font-weight:600;padding:11px 26px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28);display:inline-flex;align-items:center;gap:8px;transition:background 200ms;' + (S.searching?'opacity:0.7;pointer-events:none':''),
+      shortRows, selCount, addToCampaign, hasSel:selCount>0, shortPromo:curPromo.name,
+      copyTargets, curName:cur.name, curType:cur.type, curSuburb:cur.suburb,
+      curTo:(cur.contactName?cur.contactName+' — ':'')+(cur.email||'—'),
+      curSub:curDraft.sub, curBody:curDraft.body, curOk, curNotOk:!curOk,
+      approvedCount, targetCount:targets.length,
+      approveCur, regenCur, editCur, saveEdit, cancelEdit, approveAll,
+      editing:S.editing, notEditing:!S.editing, editSub:S.editSub, editText:S.editText,
+      setEditSub:e => me.setState({editSub:e.target.value}), setEditText:e => me.setState({editText:e.target.value}),
+      queued:S.queued, notQueued:!S.queued,
+      approveAllCss:'font-family:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:6px;border:none;cursor:pointer;background:#00C2A8;color:#0A1628;box-shadow:0 4px 14px rgba(0,194,168,0.28);transition:opacity 200ms;' + (S.queued?'opacity:0.5;pointer-events:none':''),
+      copyProgCss:'height:100%;border-radius:100px;background:#00C2A8;transition:width 300ms cubic-bezier(0.4,0,0.2,1);width:'+(targets.length?Math.round(approvedCount/targets.length*100):0)+'%',
+      stageStrip, savedLists, allListCss, clearFilters, pipeRows, pipeLabel, pipeCount:pipeRows.length,
+      hasFilter:!!(S.stageF||S.listF||anyPipeSel),
+      drawerOpen:!!drawer, drawer, closeDrawer,
+      noteDraft:S.noteDraft, setNoteDraft:e => me.setState({noteDraft:e.target.value}),
+      dncRows,
+      goWarm:() => me.setState({screen:'pipeline', listF:'warm', stageF:null, pipeSel:emptyPipeSel, openF:null}),
+      goSent:goStage('Contacted'), goOpened:goStage('Opened'), goClicked:goStage('Clicked'), goReplied:goStage('Replied'),
+      audInput:S.audInput, setAudInput:e => me.setState({audInput:e.target.value}), addWizAud,
+      audKey:e => { if(e.key==='Enter') addWizAud(); },
+      venueOpts, venueVal:String(venueVal), setVenue, venueLine,
+      areaInput:S.areaInput, setAreaInput:e => me.setState({areaInput:e.target.value}), addArea,
+      areaKey:e => { if(e.key==='Enter') addArea(); },
+      sizeBands:S.sizeMode==='bands', sizeRange:S.sizeMode==='range',
+      sizeBandsCss:sizeSeg('bands'), sizeRangeCss:sizeSeg('range'),
+      setSizeBands:() => me.setState({sizeMode:'bands'}), setSizeRange:() => me.setState({sizeMode:'range'}),
+      staffMin:S.staffMin, staffMax:S.staffMax, staffLabel,
+      setStaffMin:e => me.setState({staffMin:Math.min(+e.target.value, S.staffMax-1)}),
+      setStaffMax:e => me.setState({staffMax:Math.max(+e.target.value, S.staffMin+1)}),
+      fType:S.fType, fSize:S.fSize, fContact:S.fContact,
+      setFType:e => me.setState({fType:e.target.value}), setFSize:e => me.setState({fSize:e.target.value}), setFContact:e => me.setState({fContact:e.target.value}),
+      shortTypeOpts, shortSizeOpts:['All','S','M','L'], shortContactOpts:['All','Email','Named','Phone'], shortCount:shortRows.length,
+      sortName:() => sortBy('name'), sortType:() => sortBy('type'), sortSize:() => sortBy('size'), sortFit:() => sortBy('fit'),
+      hBiz:hLab('name','Business'), hType:hLab('type','Type'), hSize:hLab('size','Size'), hFit:hLab('fit','Fit'),
+      pipeFilters,
+      remDate:S.remDate, remTime:S.remTime, setRemDate:e => me.setState({remDate:e.target.value}), setRemTime:e => me.setState({remTime:e.target.value}),
+      noteHead:S.noteHead, noteBody:S.noteBody, setNoteHead:e => me.setState({noteHead:e.target.value}), setNoteBody:e => me.setState({noteBody:e.target.value}),
+      contactInput:S.contactInput, setContactInput:e => me.setState({contactInput:e.target.value}),
+      cRole:S.cRole, cEmail:S.cEmail, cPhone:S.cPhone,
+      setCRole:e => me.setState({cRole:e.target.value}), setCEmail:e => me.setState({cEmail:e.target.value}), setCPhone:e => me.setState({cPhone:e.target.value}),
+      venRows, venName:S.venName, venAddr:S.venAddr, setVenName:e => me.setState({venName:e.target.value}), setVenAddr:e => me.setState({venAddr:e.target.value}), addVen, areasManage
+    };
+  }
+}
+</script>
+</body>
+</html>

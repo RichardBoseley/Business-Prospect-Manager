@@ -1,0 +1,258 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "ui_kits/marketing_site/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionLabel'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|onDark|key|ref|className|style|children)$/]",
+        "message": "<SectionLabel> doesn't accept that prop. Declared props: children, onDark."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "CTASection": {
+        "replaces": []
+      },
+      "FAQ": {
+        "replaces": []
+      },
+      "Footer": {
+        "replaces": []
+      },
+      "Hero": {
+        "replaces": []
+      },
+      "OurProcess": {
+        "replaces": []
+      },
+      "Pricing": {
+        "replaces": []
+      },
+      "SectionLabel": {
+        "replaces": []
+      },
+      "TopNav": {
+        "replaces": []
+      },
+      "WhatWeBuild": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--color-accent",
+      "--color-accent-h",
+      "--color-accent-on-dark",
+      "--color-accent-ring",
+      "--color-accent-shadow",
+      "--color-accent-soft",
+      "--color-bg",
+      "--color-border",
+      "--color-brand",
+      "--color-danger",
+      "--color-danger-ring",
+      "--color-danger-soft",
+      "--color-draft",
+      "--color-draft-dot",
+      "--color-draft-ring",
+      "--color-draft-soft",
+      "--color-muted",
+      "--color-nav-pill",
+      "--color-navy",
+      "--color-navy-med",
+      "--color-success",
+      "--color-success-soft",
+      "--color-surface",
+      "--color-surface-alt",
+      "--dur-base",
+      "--dur-fast",
+      "--dur-slow",
+      "--ease-standard",
+      "--focus-ring",
+      "--font-sans",
+      "--fs-base",
+      "--fs-body",
+      "--fs-display",
+      "--fs-eyebrow",
+      "--fs-h1",
+      "--fs-h2",
+      "--fs-h3",
+      "--fs-lg",
+      "--fs-sm",
+      "--fs-xs",
+      "--fw-bold",
+      "--fw-extrabold",
+      "--fw-light",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--lh-body",
+      "--lh-relaxed",
+      "--lh-snug",
+      "--lh-tight",
+      "--on-dark-border",
+      "--on-dark-surface",
+      "--on-dark-surface-hi",
+      "--on-dark-text",
+      "--on-dark-text-dim",
+      "--on-dark-text-mute",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--radius-xl",
+      "--shadow-card",
+      "--shadow-cta",
+      "--shadow-cta-hi",
+      "--shadow-deep",
+      "--shadow-hero",
+      "--shadow-hover",
+      "--shadow-panel",
+      "--shadow-soft",
+      "--sp-0",
+      "--sp-1",
+      "--sp-10",
+      "--sp-12",
+      "--sp-16",
+      "--sp-2",
+      "--sp-24",
+      "--sp-3",
+      "--sp-4",
+      "--sp-5",
+      "--sp-6",
+      "--sp-8",
+      "--tracking-caps",
+      "--tracking-display",
+      "--tracking-eyebrow",
+      "--tracking-heading"
+    ],
+    "tokenKinds": {
+      "--color-accent": "color",
+      "--color-accent-h": "color",
+      "--color-accent-soft": "color",
+      "--color-accent-ring": "color",
+      "--color-accent-shadow": "shadow",
+      "--color-accent-on-dark": "color",
+      "--color-navy": "color",
+      "--color-navy-med": "color",
+      "--color-nav-pill": "color",
+      "--color-bg": "color",
+      "--color-surface": "color",
+      "--color-border": "color",
+      "--color-muted": "color",
+      "--color-brand": "color",
+      "--on-dark-text": "font",
+      "--on-dark-text-dim": "font",
+      "--on-dark-text-mute": "font",
+      "--on-dark-border": "color",
+      "--on-dark-surface": "color",
+      "--on-dark-surface-hi": "color",
+      "--font-sans": "font",
+      "--fs-display": "spacing",
+      "--fs-h1": "spacing",
+      "--fs-h2": "spacing",
+      "--fs-h3": "spacing",
+      "--fs-lg": "spacing",
+      "--fs-body": "spacing",
+      "--fs-base": "spacing",
+      "--fs-sm": "spacing",
+      "--fs-xs": "spacing",
+      "--fs-eyebrow": "spacing",
+      "--fw-light": "font",
+      "--fw-regular": "font",
+      "--fw-medium": "font",
+      "--fw-semibold": "font",
+      "--fw-bold": "font",
+      "--fw-extrabold": "font",
+      "--lh-tight": "font",
+      "--lh-snug": "font",
+      "--lh-body": "font",
+      "--lh-relaxed": "font",
+      "--tracking-display": "font",
+      "--tracking-heading": "font",
+      "--tracking-eyebrow": "font",
+      "--tracking-caps": "font",
+      "--sp-0": "spacing",
+      "--sp-1": "spacing",
+      "--sp-2": "spacing",
+      "--sp-3": "spacing",
+      "--sp-4": "spacing",
+      "--sp-5": "spacing",
+      "--sp-6": "spacing",
+      "--sp-8": "spacing",
+      "--sp-10": "spacing",
+      "--sp-12": "spacing",
+      "--sp-16": "spacing",
+      "--sp-24": "spacing",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-xl": "radius",
+      "--radius-pill": "radius",
+      "--shadow-soft": "shadow",
+      "--shadow-card": "shadow",
+      "--shadow-cta": "shadow",
+      "--shadow-cta-hi": "shadow",
+      "--shadow-hero": "shadow",
+      "--shadow-hover": "shadow",
+      "--shadow-deep": "shadow",
+      "--ease-standard": "other",
+      "--dur-fast": "other",
+      "--dur-base": "other",
+      "--dur-slow": "other",
+      "--color-surface-alt": "color",
+      "--color-draft": "color",
+      "--color-draft-dot": "color",
+      "--color-draft-soft": "color",
+      "--color-draft-ring": "color",
+      "--color-success": "color",
+      "--color-success-soft": "color",
+      "--color-danger": "color",
+      "--color-danger-soft": "color",
+      "--color-danger-ring": "color",
+      "--shadow-panel": "shadow",
+      "--focus-ring": "shadow"
+    },
+    "fontFamilies": []
+  }
+}

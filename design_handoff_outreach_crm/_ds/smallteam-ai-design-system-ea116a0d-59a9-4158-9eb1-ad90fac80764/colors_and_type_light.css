@@ -1,0 +1,219 @@
+/* =====================================================================
+   smallteam.ai — Colors & Type · LIGHT THEME (admin / app surfaces)
+   Companion to colors_and_type.css. Same token names, re-pointed for
+   light-first product UI: white/very-light surfaces, navy ink, teal
+   reserved for primary actions and selection.
+
+   Usage — either:
+     a) load INSTEAD of colors_and_type.css on light-first app screens, or
+     b) load AFTER it and scope with .theme-light { ... } (tokens below
+        are declared on both :root and .theme-light).
+
+   Derivation rules (from the dark/marketing system):
+     - Navy #0A1628 moves from BACKGROUND to INK (headings + primary text).
+     - Teal #00C2A8 is unchanged: primary CTA, links, focus, selection only.
+     - Surfaces flip: page = surface grey #F4F6FA, panels/bars = white.
+     - on-dark-* helpers keep their meaning (for the rare dark panel
+       inside a light screen, e.g. toasts, hint pills).
+     - NEW: semantic status colours (draft/success/danger) that the
+       marketing palette never needed. Flagged _NEW below.
+   ===================================================================== */
+
+:root, .theme-light {
+  /* ---------- Brand / accent (unchanged) ---------- */
+  --color-accent:         #00C2A8;
+  --color-accent-h:       #00a891;
+  --color-accent-soft:    rgba(0, 194, 168, 0.08);
+  --color-accent-ring:    rgba(0, 194, 168, 0.25);
+  --color-accent-shadow:  rgba(0, 194, 168, 0.28);
+  --color-accent-on-dark: rgba(77, 255, 180, 0.85);
+
+  /* ---------- Navy — now the INK, still available as a surface ---------- */
+  --color-navy:           #0A1628;
+  --color-navy-med:       #0d1f3a;
+  --color-nav-pill:       #303964;
+
+  /* ---------- Light surfaces + neutrals ---------- */
+  --color-bg:             #F4F6FA;   /* App/page base — canvas behind panels (was #FFFFFF) */
+  --color-surface:        #FFFFFF;   /* Panels, bars, cards — the working surfaces (was #F4F6FA) */
+  --color-surface-alt:    #F4F6FA;   /* _NEW alias — inset wells, hover fills, input bg on white */
+  --color-border:         #E8ECF0;   /* Hairlines 1–1.5px (unchanged) */
+  --color-muted:          #6C757D;   /* Secondary text (unchanged) */
+  --color-brand:          #0A1628;   /* Ink — headings + primary text (was near-black #181214; navy reads more branded on light UI) */
+
+  /* ---------- Semantic status colours — _NEW (admin UI needs state) ---------- */
+  --color-draft:          #9A5B00;               /* Draft/unpublished text */
+  --color-draft-dot:      #E8960C;               /* Draft indicator dot */
+  --color-draft-soft:     rgba(255, 170, 0, 0.12);
+  --color-draft-ring:     rgba(255, 170, 0, 0.30);
+  --color-success:        #0E8A63;               /* Live / succeeded */
+  --color-success-soft:   rgba(14, 138, 99, 0.10);
+  --color-danger:         #C03530;               /* Discard / destructive / failed */
+  --color-danger-soft:    rgba(192, 53, 48, 0.08);
+  --color-danger-ring:    rgba(192, 53, 48, 0.35);
+
+  /* ---------- on-dark helpers (unchanged — for dark elements ON light screens) ---------- */
+  --on-dark-text:         rgba(255, 255, 255, 0.95);
+  --on-dark-text-dim:     rgba(255, 255, 255, 0.60);
+  --on-dark-text-mute:    rgba(255, 255, 255, 0.40);
+  --on-dark-border:       rgba(255, 255, 255, 0.14);
+  --on-dark-surface:      rgba(255, 255, 255, 0.05);
+  --on-dark-surface-hi:   rgba(255, 255, 255, 0.10);
+
+  /* ---------- Type (same stack; scale trimmed for admin density) ---------- */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-display:   34px;   /* App page title — admin screens never need 56px (marketing: 56) */
+  --fs-h1:        28px;   /* Screen H1 (marketing: 40) */
+  --fs-h2:        20px;   /* Panel / section title (marketing: 36) */
+  --fs-h3:        16px;   /* Card / widget title (marketing: 20) */
+  --fs-lg:        15px;   /* Lead paragraph (marketing: 19) */
+  --fs-body:      15px;   /* Body (marketing: 17) */
+  --fs-base:      14px;   /* Default UI text (marketing: 15) */
+  --fs-sm:        13px;   /* Labels, buttons secondary (marketing: 14) */
+  --fs-xs:        12px;   /* Meta, timestamps (marketing: 13) */
+  --fs-eyebrow:   11px;   /* Unchanged */
+
+  --fw-light:     300;  /* @kind font */
+  --fw-regular:   400;  /* @kind font */
+  --fw-medium:    500;  /* @kind font */
+  --fw-semibold:  600;  /* @kind font */
+  --fw-bold:      700;  /* @kind font */
+  --fw-extrabold: 800;  /* @kind font */
+
+  --lh-tight:     1.15; /* @kind font */ /* Page titles (marketing display: 1.08) */
+  --lh-snug:      1.25;  /* @kind font */
+  --lh-body:      1.55; /* @kind font */ /* Denser than marketing 1.65 */
+  --lh-relaxed:   1.65; /* @kind font */ /* (marketing: 1.70) */
+
+  --tracking-display: -0.03em;  /* @kind font */
+  --tracking-heading: -0.02em;  /* @kind font */
+  --tracking-eyebrow:  0.10em;  /* @kind font */
+  --tracking-caps:     0.08em;  /* @kind font */
+
+  /* ---------- Spacing (same scale; sections use --sp-8..12, not --sp-24) ---------- */
+  --sp-0: 0; /* @kind spacing */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-24: 96px;
+
+  /* ---------- Radii (unchanged) ---------- */
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 12px;
+  --radius-xl: 14px; --radius-pill: 100px;
+
+  /* ---------- Shadows (unchanged system) ---------- */
+  --shadow-soft:   0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.04);
+  --shadow-card:   0 2px 12px rgba(0, 194, 168, 0.07);
+  --shadow-cta:    0 4px 14px rgba(0, 194, 168, 0.28);
+  --shadow-cta-hi: 0 4px 14px rgba(0, 194, 168, 0.35);
+  --shadow-hero:   0 8px 40px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
+  --shadow-hover:  0 4px 20px rgba(0, 194, 168, 0.07);
+  --shadow-deep:   0 8px 32px rgba(0, 194, 168, 0.12), 0 0 0 1px rgba(0, 194, 168, 0.12);
+  --shadow-panel:  -24px 0 48px rgba(10, 22, 40, 0.10);   /* _NEW — slide-over panels */
+
+  /* ---------- Focus ring — _NEW (admin UIs are keyboard-heavy) ---------- */
+  --focus-ring: 0 0 0 3px rgba(0, 194, 168, 0.15);  /* @kind shadow */
+
+  /* ---------- Motion (unchanged) ---------- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);  /* @kind other */
+  --dur-fast: 150ms; /* @kind other */
+  --dur-base: 200ms; /* @kind other */
+  --dur-slow: 300ms; /* @kind other */
+}
+
+/* =====================================================================
+   Base element styles — light-app defaults
+   ===================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  color: var(--color-brand);
+  background: var(--color-bg);
+  line-height: var(--lh-relaxed);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+h1, .st-h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); line-height: var(--lh-tight); letter-spacing: var(--tracking-display); margin: 0; }
+h2, .st-h2 { font-size: var(--fs-h2); font-weight: var(--fw-semibold); line-height: var(--lh-snug); letter-spacing: var(--tracking-heading); margin: 0; }
+h3, .st-h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: 1.35; letter-spacing: -0.01em; margin: 0; }
+p, .st-p { font-size: var(--fs-base); line-height: var(--lh-relaxed); margin: 0; }
+.st-muted { color: var(--color-muted); }
+.st-meta { font-size: var(--fs-xs); color: var(--color-muted); }
+.st-accent { color: var(--color-accent); font-weight: var(--fw-extrabold); }
+
+.st-eyebrow {
+  font-size: var(--fs-eyebrow); font-weight: var(--fw-semibold);
+  text-transform: uppercase; letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-accent-h);   /* darker teal for AA contrast on white */
+}
+.st-eyebrow-pill {
+  display: inline-block; font-size: var(--fs-eyebrow); font-weight: var(--fw-semibold);
+  text-transform: uppercase; letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-accent-h); background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-ring); border-radius: var(--radius-pill);
+  padding: 4px 12px;
+}
+
+a.st-link { color: var(--color-accent-h); text-decoration: none; font-weight: var(--fw-medium); transition: color var(--dur-base) var(--ease-standard); }
+a.st-link:hover { color: var(--color-brand); }
+
+/* ---------- Core components ---------- */
+.st-btn-primary {
+  font-family: inherit; font-size: var(--fs-base); font-weight: var(--fw-semibold);
+  padding: 10px 20px; border-radius: var(--radius-sm); border: none; cursor: pointer;
+  background: var(--color-accent); color: var(--color-navy); box-shadow: var(--shadow-cta);
+  transition: background var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard);
+}
+.st-btn-primary:hover { background: var(--color-accent-h); transform: translateY(-1px); }
+
+.st-btn-secondary {
+  font-family: inherit; font-size: var(--fs-base); font-weight: var(--fw-semibold);
+  padding: 9px 18px; border-radius: var(--radius-sm); cursor: pointer;
+  background: var(--color-surface); border: 1.5px solid var(--color-border); color: var(--color-brand);
+  transition: border-color var(--dur-base) var(--ease-standard);
+}
+.st-btn-secondary:hover { border-color: rgba(0, 194, 168, 0.5); }
+
+.st-btn-ghost {
+  font-family: inherit; font-size: var(--fs-base); font-weight: var(--fw-semibold);
+  padding: 9px 16px; border-radius: var(--radius-sm); cursor: pointer;
+  background: transparent; border: none; color: var(--color-muted);
+  transition: color var(--dur-fast), background var(--dur-fast);
+}
+.st-btn-ghost:hover { color: var(--color-brand); background: var(--color-surface-alt); }
+
+.st-btn-danger {
+  font-family: inherit; font-size: var(--fs-base); font-weight: var(--fw-semibold);
+  padding: 9px 16px; border-radius: var(--radius-sm); cursor: pointer;
+  background: transparent; border: none; color: var(--color-danger);
+  transition: background var(--dur-fast);
+}
+.st-btn-danger:hover { background: var(--color-danger-soft); }
+
+.st-input {
+  font-family: inherit; font-size: var(--fs-base); padding: 9px 13px;
+  border: 1.5px solid var(--color-border); border-radius: var(--radius-sm);
+  outline: none; background: var(--color-surface); color: var(--color-brand);
+}
+.st-input::placeholder { color: #9AA5B1; }
+.st-input:focus { border-color: var(--color-accent); box-shadow: var(--focus-ring); }
+
+.st-panel {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);
+}
+
+/* Status chips — one colour, one meaning, everywhere */
+.st-chip { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-xs); font-weight: var(--fw-semibold); border-radius: var(--radius-pill); padding: 4px 11px; }
+.st-chip .dot { width: 6px; height: 6px; border-radius: 50%; }
+.st-chip-draft   { color: var(--color-draft);   background: var(--color-draft-soft); }
+.st-chip-draft .dot   { background: var(--color-draft-dot); }
+.st-chip-staged  { color: #00775f;              background: rgba(0, 194, 168, 0.10); }
+.st-chip-staged .dot  { background: var(--color-accent); }
+.st-chip-success { color: var(--color-success); background: var(--color-success-soft); }
+.st-chip-success .dot { background: var(--color-success); }
+.st-chip-danger  { color: var(--color-danger);  background: var(--color-danger-soft); }
+.st-chip-danger .dot  { background: var(--color-danger); }

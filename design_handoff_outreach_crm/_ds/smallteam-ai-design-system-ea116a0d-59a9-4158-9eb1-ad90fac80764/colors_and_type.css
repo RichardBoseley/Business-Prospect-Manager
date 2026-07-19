@@ -1,0 +1,239 @@
+/* =====================================================================
+   smallteam.ai — Colors & Type
+   The single source of truth for colour tokens, type scale, and
+   semantic element styles. Pulled from the marketing site's
+   app/globals.css and extended for design-system use.
+   ===================================================================== */
+
+/* Type stack — system-native only.
+   We use the platform sans-serif on each OS. No web fonts, no uploads,
+   no licensing, no "missing brand font" warnings — every viewer sees
+   a font already installed on their device.
+     macOS / iOS    → San Francisco (via system-ui / -apple-system)
+     Windows        → Segoe UI Variable / Segoe UI
+     Android        → Roboto
+     ChromeOS       → Roboto
+     Linux          → whatever the desktop ships (Cantarell, DejaVu, …)
+   All four primary stacks are neutral humanist sans-serifs with
+   similar x-height and proportions — close enough that layout,
+   line-breaks and rhythm stay consistent across platforms. */
+
+:root {
+  /* ---------- Brand / accent ---------- */
+  --color-accent:         #00C2A8;   /* Teal — primary CTA, links, highlights */
+  --color-accent-h:       #00a891;   /* Teal hover */
+  --color-accent-soft:    rgba(0, 194, 168, 0.08);   /* Capsule label bg, soft tints */
+  --color-accent-ring:    rgba(0, 194, 168, 0.25);   /* Capsule label border */
+  --color-accent-shadow:  rgba(0, 194, 168, 0.28);   /* Teal CTA shadow */
+  --color-accent-on-dark: rgba(77, 255, 180, 0.85);  /* Mint — labels on navy */
+
+  /* ---------- Navy / dark surfaces ---------- */
+  --color-navy:           #0A1628;   /* Hero + dark sections */
+  --color-navy-med:       #0d1f3a;   /* Slightly lighter navy surface */
+  --color-nav-pill:       #303964;   /* Glassy pill nav bg */
+
+  /* ---------- Light surfaces + neutrals ---------- */
+  --color-bg:             #FFFFFF;   /* Page base */
+  --color-surface:        #F4F6FA;   /* Cards, input backgrounds, alt sections */
+  --color-border:         #E8ECF0;   /* Hairline dividers, input borders */
+  --color-muted:          #6C757D;   /* Caption + secondary text */
+  --color-brand:          #181214;   /* Near-black — primary text, headings */
+
+  /* ---------- Semantic helpers (on dark backgrounds) ---------- */
+  --on-dark-text:         rgba(255, 255, 255, 0.95);
+  --on-dark-text-dim:     rgba(255, 255, 255, 0.60);
+  --on-dark-text-mute:    rgba(255, 255, 255, 0.40);
+  --on-dark-border:       rgba(255, 255, 255, 0.14);
+  --on-dark-surface:      rgba(255, 255, 255, 0.05);
+  --on-dark-surface-hi:   rgba(255, 255, 255, 0.10);
+
+  /* ---------- Type ---------- */
+  /* System-native stack — order matters. system-ui resolves to the
+     OS default (San Francisco on Apple, Segoe UI on Windows, Roboto
+     on Android/Chrome), then -apple-system / Segoe UI / Roboto are
+     belt-and-braces for older browsers that don't honour system-ui. */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Scale — used by the site's clamp() patterns. Values are the
+     breakpoint-stable desktop sizes. */
+  --fs-display:   56px;   /* Hero H1 (clamp 38-64)          */
+  --fs-h1:        40px;   /* Mid-section H1 (clamp 32-52)   */
+  --fs-h2:        36px;   /* Section H2 (clamp 26-38)       */
+  --fs-h3:        20px;   /* Card / tab title               */
+  --fs-lg:        19px;   /* Hero sub-paragraph             */
+  --fs-body:      17px;   /* Section paragraph              */
+  --fs-base:      15px;   /* Default body / bullet text     */
+  --fs-sm:        14px;   /* Card body, nav links           */
+  --fs-xs:        13px;   /* Meta, small labels             */
+  --fs-eyebrow:   11px;   /* Uppercase section labels       */
+
+  --fw-light:     300;  /* @kind font */
+  --fw-regular:   400;  /* @kind font */
+  --fw-medium:    500;  /* @kind font */
+  --fw-semibold:  600;  /* @kind font */
+  --fw-bold:      700;  /* @kind font */
+  --fw-extrabold: 800;  /* @kind font */
+
+  --lh-tight:     1.08; /* @kind font */ /* Display headlines */
+  --lh-snug:      1.20; /* @kind font */ /* Section H2 */
+  --lh-body:      1.65; /* @kind font */ /* Long paragraphs */
+  --lh-relaxed:   1.70; /* @kind font */ /* Global body default */
+
+  --tracking-display: -0.03em;  /* @kind font */
+  --tracking-heading: -0.02em;  /* @kind font */
+  --tracking-eyebrow:  0.10em; /* @kind font */ /* Uppercase labels */
+  --tracking-caps:     0.08em; /* @kind font */ /* Smaller all-caps meta */
+
+  /* ---------- Spacing scale ---------- */
+  --sp-0: 0; /* @kind spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-24: 96px;      /* Section vertical padding (py-24 in Tailwind = 6rem) */
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 6px;    /* Default — buttons, inputs, flat cards */
+  --radius-md: 10px;   /* Feature cards, pricing cards, panels */
+  --radius-lg: 12px;   /* Elevated panels, chat surface */
+  --radius-xl: 14px;   /* Hero input */
+  --radius-pill: 100px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-soft:   0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.04);
+  --shadow-card:   0 2px 12px rgba(0, 194, 168, 0.07);                 /* Teal-tinted, for active tabs */
+  --shadow-cta:    0 4px 14px rgba(0, 194, 168, 0.28);                 /* Teal CTA glow */
+  --shadow-cta-hi: 0 4px 14px rgba(0, 194, 168, 0.35);                 /* Brighter CTA glow */
+  --shadow-hero:   0 8px 40px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.18);
+  --shadow-hover:  0 4px 20px rgba(0, 194, 168, 0.07);                 /* Card hover lift */
+  --shadow-deep:   0 8px 32px rgba(0, 194, 168, 0.12), 0 0 0 1px rgba(0, 194, 168, 0.12);
+
+  /* ---------- Motion ---------- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);  /* @kind other */
+  --dur-fast:      150ms;  /* @kind other */
+  --dur-base:      200ms;  /* @kind other */
+  --dur-slow:      300ms;  /* @kind other */
+}
+
+/* =====================================================================
+   Base element styles — semantic defaults so copied HTML "just works"
+   ===================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  color: var(--color-brand);
+  background: var(--color-bg);
+  line-height: var(--lh-relaxed);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+/* Display / hero headline — used on navy hero */
+.st-display {
+  font-size: clamp(38px, 5.5vw, 64px);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+
+/* Primary H1 for content sections */
+h1, .st-h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+}
+
+/* Section H2 — the workhorse. Semi-bold, not bold. */
+h2, .st-h2 {
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-heading);
+  margin: 0;
+}
+
+/* Card / sub-panel title */
+h3, .st-h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Paragraph defaults */
+p, .st-p {
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+
+.st-lead {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-body);
+  color: var(--on-dark-text-dim);   /* intended for hero sub-copy over navy */
+}
+
+.st-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-muted);
+}
+
+.st-muted { color: var(--color-muted); }
+
+/* Eyebrow — uppercase small-caps label above section headings */
+.st-eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-accent);
+}
+
+/* Capsule eyebrow — the SectionLabel pattern from the site */
+.st-eyebrow-pill {
+  display: inline-block;
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-ring);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+}
+
+/* Meta / tag row */
+.st-meta {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+/* Inline accent span — e.g. the ".ai" in "smallteam.ai" */
+.st-accent {
+  color: var(--color-accent);
+  font-weight: var(--fw-extrabold);
+}
+
+/* Links */
+a.st-link {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: var(--fw-medium);
+  transition: opacity var(--dur-base) var(--ease-standard);
+}
+a.st-link:hover { opacity: 0.75; }
