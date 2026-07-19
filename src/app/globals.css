@@ -1,0 +1,292 @@
+@import "tailwindcss";
+@import "../styles/colors_and_type_light.css";
+
+/* Inter (loaded via next/font) replaces the system stack as the token source's --font-sans */
+:root,
+.theme-light {
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-family: var(--font-sans);
+  color: var(--color-brand);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #00a891;
+  text-decoration: none;
+}
+a:hover {
+  color: #0a1628;
+}
+
+input[type="range"] {
+  accent-color: #00c2a8;
+}
+
+@keyframes go-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes go-slidein {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes go-fadeup {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Interactive patterns ported from the prototype's style-hover/style-focus
+   attributes. Static layout stays inline on each element; anything a hover or
+   focus state changes lives here so the state can win. */
+
+.go-btn-primary {
+  font-family: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #00c2a8;
+  color: #0a1628;
+  transition:
+    background 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.go-btn-primary:hover {
+  background: #00a891;
+}
+.go-lift:hover {
+  transform: translateY(-1px);
+}
+
+.go-btn-secondary {
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  border: 1.5px solid #e8ecf0;
+  color: #0a1628;
+  transition: border-color 150ms;
+}
+.go-btn-secondary:hover {
+  border-color: rgba(0, 194, 168, 0.5);
+}
+
+.go-btn-ghost {
+  font-family: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: transparent;
+  color: #6c757d;
+  transition:
+    color 150ms,
+    background 150ms;
+}
+.go-btn-ghost:hover {
+  color: #0a1628;
+  background: #f4f6fa;
+}
+
+.go-btn-amber {
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  border: 1.5px solid #e8ecf0;
+  color: #9a5b00;
+  transition: border-color 150ms;
+}
+.go-btn-amber:hover {
+  border-color: rgba(255, 170, 0, 0.5);
+}
+
+.go-btn-grey {
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  border: 1.5px solid #e8ecf0;
+  color: #6c757d;
+  transition: border-color 150ms;
+}
+.go-btn-grey:hover {
+  border-color: #c6cdd5;
+}
+
+.go-row {
+  transition: background 150ms;
+}
+.go-row:hover {
+  background: #f9fafc;
+}
+
+.go-nav {
+  transition:
+    background 150ms,
+    color 150ms;
+}
+.go-nav:hover {
+  background: #f4f6fa;
+}
+
+.go-card {
+  border: 1px solid #e8ecf0;
+  transition:
+    box-shadow 200ms,
+    transform 200ms;
+}
+.go-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 194, 168, 0.07);
+  transform: translateY(-2px);
+}
+
+.go-kpi {
+  border: 1px solid #e8ecf0;
+  transition: border-color 150ms;
+}
+.go-kpi:hover {
+  border-color: rgba(0, 194, 168, 0.45);
+}
+
+.go-warm {
+  box-shadow: 0 2px 12px rgba(0, 194, 168, 0.07);
+  transition: box-shadow 150ms;
+}
+.go-warm:hover {
+  box-shadow: 0 4px 20px rgba(0, 194, 168, 0.16);
+}
+
+.go-link {
+  color: #00a891;
+  cursor: pointer;
+  transition: color 150ms;
+}
+.go-link:hover {
+  color: #0a1628;
+}
+
+.go-dim {
+  color: #6c757d;
+  cursor: pointer;
+  transition: color 150ms;
+}
+.go-dim:hover {
+  color: #0a1628;
+}
+
+.go-iconbtn {
+  color: #6c757d;
+  border: 1.5px solid #e8ecf0;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 150ms,
+    color 150ms;
+}
+.go-iconbtn:hover {
+  border-color: rgba(0, 194, 168, 0.5);
+  color: #0a1628;
+}
+
+.go-box-off {
+  background: #fff;
+  border: 1.5px solid #d6dce3;
+  transition:
+    background 150ms,
+    border-color 150ms;
+}
+.go-box-off:hover {
+  border-color: #00c2a8;
+}
+
+.go-fade70 {
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 150ms;
+}
+.go-fade70:hover {
+  opacity: 1;
+}
+.go-fade75 {
+  opacity: 0.75;
+  cursor: pointer;
+  transition: opacity 150ms;
+}
+.go-fade75:hover {
+  opacity: 1;
+}
+
+.go-x {
+  color: #6c757d;
+  cursor: pointer;
+  transition: color 150ms;
+}
+.go-x:hover {
+  color: #c03530;
+}
+
+.go-input {
+  font-family: inherit;
+  border: 1.5px solid #e8ecf0;
+  border-radius: 6px;
+  outline: none;
+  color: #0a1628;
+  transition:
+    border-color 150ms,
+    box-shadow 150ms;
+}
+.go-input::placeholder {
+  color: #9aa5b1;
+}
+.go-input:focus {
+  border-color: #00c2a8;
+  box-shadow: 0 0 0 3px rgba(0, 194, 168, 0.15);
+}
+
+.go-stage {
+  transition: background 150ms;
+}
+.go-stage:hover {
+  background: rgba(0, 194, 168, 0.06);
+}
+
+.go-qmark {
+  transition:
+    border-color 150ms,
+    color 150ms;
+}
+.go-qmark:hover {
+  border-color: #00c2a8 !important;
+  color: #00775f !important;
+}
+
+.go-aud-off {
+  transition: border-color 150ms;
+}
+.go-aud-off:hover {
+  border-color: rgba(0, 194, 168, 0.45);
+}
