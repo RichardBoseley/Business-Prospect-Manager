@@ -3,7 +3,6 @@
 import { panelStyle, StageChip, thStyle } from "@/components/chips";
 import { Tick } from "@/components/icons";
 import { PageHeader, Screen } from "@/components/Screen";
-import { seedPromotionMembers, seedSavedLists } from "@/lib/data/seed";
 import { EMPTY_PIPE_SEL, useApp } from "@/lib/store";
 import type { Business } from "@/lib/types";
 import { STAGES } from "@/lib/types";
@@ -83,7 +82,7 @@ export function PipelineScreen() {
     if (
       promos.length &&
       !promos.some(
-        (p) => p === "xmas" || (seedPromotionMembers[p] ?? []).includes(b.id),
+        (p) => p === "xmas" || (state.promotionMembers[p] ?? []).includes(b.id),
       )
     )
       return false;
@@ -99,14 +98,14 @@ export function PipelineScreen() {
   });
   if (state.stageFilter) rows = rows.filter((b) => stageOf(b) === state.stageFilter);
   if (state.listFilter) {
-    const list = seedSavedLists.find((l) => l.id === state.listFilter);
+    const list = state.savedLists.find((l) => l.id === state.listFilter);
     rows = rows.filter((b) => list?.memberIds.includes(b.id));
   }
 
   const listLabel = state.stageFilter
     ? "Stage: " + state.stageFilter
     : state.listFilter
-      ? (seedSavedLists.find((l) => l.id === state.listFilter)?.label ?? "")
+      ? (state.savedLists.find((l) => l.id === state.listFilter)?.label ?? "")
       : anySelected
         ? "Filtered"
         : "All businesses";
@@ -400,7 +399,7 @@ export function PipelineScreen() {
           >
             All businesses
           </span>
-          {seedSavedLists.map((l) => (
+          {state.savedLists.map((l) => (
             <span
               key={l.id}
               className="go-nav"

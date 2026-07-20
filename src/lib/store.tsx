@@ -11,10 +11,12 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from "react";
+import type { WorkspaceBootstrap } from "./db/repository";
 import {
   seedApprovedIds,
   seedBusinesses,
@@ -30,6 +32,10 @@ import {
   seedWorkspace,
 } from "./data/seed";
 import { draftingService } from "./services/drafting";
+import {
+  seedPromotionMembers,
+  seedSavedLists,
+} from "./data/seed";
 import type {
   Business,
   Contact,
@@ -38,6 +44,7 @@ import type {
   Note,
   Promotion,
   Reminder,
+  SavedList,
   SizeBand,
   Stage,
   Venue,
@@ -56,6 +63,12 @@ export interface AudienceChip {
 }
 
 export interface AppState {
+  /** True once the server confirms Cognito auth is configured. */
+  authEnabled: boolean;
+  businesses: Business[];
+  dncEntries: DNCEntry[];
+  savedLists: SavedList[];
+  promotionMembers: Record<string, string[]>;
   promotions: Promotion[];
   currentPromoId: string;
 
@@ -162,6 +175,11 @@ function initialState(): AppState {
     (a) => (areas[a] = seedSelectedAreas.includes(a)),
   );
   return {
+    authEnabled: false,
+    businesses: seedBusinesses,
+    dncEntries: seedDncEntries,
+    savedLists: seedSavedLists,
+    promotionMembers: seedPromotionMembers,
     promotions: seedPromotions,
     currentPromoId: "xmas",
     drawerId: null,
@@ -250,10 +268,40 @@ interface AppContextValue {
   primaryNameOf: (b: Business) => string | undefined;
   openLead: (id: string) => void;
   closeDrawer: () => void;
+  /** Persists a manual DNC addition to the register (permanent). */
+  confirmDnc: (businessId: string) => void;
   dncEntries: DNCEntry[];
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
+
+/** Maps the server bootstrap payload onto client state. */
+function fromBootstrap(
+  data: WorkspaceBootstrap & { authEnabled: boolean },
+): Partial<AppState> {
+  const selected: Record<string, boolean> = {};
+  data.selectedIds.forEach((id) => (selected[id] = true));
+  const approved: Record<string, boolean> = {};
+  data.approvedIds.forEach((id) => (approved[id] = true));
+  const areas: Record<string, boolean> = {};
+  data.areas.forEach((a) => (areas[a.name] = a.selected));
+  return {
+    authEnabled: data.authEnabled,
+    businesses: data.businesses,
+    dncEntries: data.dncEntries,
+    savedLists: data.savedLists,
+    promotionMembers: data.promotionMembers,
+    promotions: data.promotions,
+    detailedNotes: data.detailedNotes,
+    venues: data.venues,
+    primaryVen: data.primaryVenueIndex,
+    areas,
+    selected,
+    approved,
+    dailyLimit: data.workspace.dailySendLimit,
+    showRationale: data.workspace.showRationale,
+  };
+}
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AppState>(initialState);
@@ -268,6 +316,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
     [update],
   );
 
+  // Hydrate from the SQLite-backed workspace once on load; the static seed
+  // fills in until (or if) the API responds, so the UI never blanks.
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/bootstrap")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data && !cancelled) setState((s) => ({ ...s, ...fromBootstrap(data) }));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const value = useMemo<AppContextValue>(() => {
     const stageOf = (b: Business) => state.stageOverrides[b.id] ?? b.stage;
     const contactsOf = (b: Business) => [
@@ -278,7 +341,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       state,
       patch,
       update,
-      businesses: seedBusinesses,
+      businesses: state.businesses,
       stageOf,
       draftOf: (b) =>
         state.overrides[b.id] ?? draftingService.draft(b, state.regen[b.id] ?? 0),
@@ -302,7 +365,29 @@ export function AppProvider({ children }: { children: ReactNode }) {
           addContactOpen: false,
         }),
       closeDrawer: () => patch({ drawerId: null }),
-      dncEntries: seedDncEntries,
+      confirmDnc: (businessId: string) => {
+        update((s) => ({
+          stageOverrides: {
+            ...s.stageOverrides,
+            [businessId]: "Not interested",
+          },
+          dncAdded: { ...s.dncAdded, [businessId]: true },
+          dncConfirm: false,
+        }));
+        fetch("/api/dnc", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ businessId }),
+        })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((data) => {
+            if (data?.entry) {
+              update((s) => ({ dncEntries: [data.entry, ...s.dncEntries] }));
+            }
+          })
+          .catch(() => {});
+      },
+      dncEntries: state.dncEntries,
     };
   }, [state, patch, update]);
 

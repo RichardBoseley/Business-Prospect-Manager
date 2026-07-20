@@ -45,6 +45,7 @@ export function LeadDrawer() {
     contactsOf,
     primaryNameOf,
     closeDrawer,
+    confirmDnc,
   } = useApp();
 
   const lead = state.drawerId
@@ -660,16 +661,7 @@ export function LeadDrawer() {
                   </span>
                   <div style={{ display: "flex", gap: 8 }}>
                     <button
-                      onClick={() =>
-                        update((s) => ({
-                          stageOverrides: {
-                            ...s.stageOverrides,
-                            [lead.id]: "Not interested",
-                          },
-                          dncAdded: { ...s.dncAdded, [lead.id]: true },
-                          dncConfirm: false,
-                        }))
-                      }
+                      onClick={() => confirmDnc(lead.id)}
                       style={{
                         fontFamily: "inherit",
                         fontSize: 12.5,
