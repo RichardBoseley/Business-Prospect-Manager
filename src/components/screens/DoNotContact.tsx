@@ -8,17 +8,8 @@ import { useApp } from "@/lib/store";
 const grid = "2fr 1.4fr 1fr 40px";
 
 export function DoNotContactScreen() {
-  const { state, businesses, dncEntries } = useApp();
-
-  const manualRows = businesses
-    .filter((b) => state.dncAdded[b.id])
-    .map((b) => ({
-      businessName: b.name,
-      detail: `${b.type} · ${b.suburb}`,
-      reason: "Manual — added from lead detail",
-      date: "18 Jul 2026",
-    }));
-  const rows = [...manualRows, ...dncEntries];
+  const { dncEntries } = useApp();
+  const rows = dncEntries;
 
   return (
     <Screen maxWidth={860}>

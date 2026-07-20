@@ -23,3 +23,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# local SQLite database
+/.data/
+
+# provisioning outputs (keys, generated env) — never commit
+/infra/out/

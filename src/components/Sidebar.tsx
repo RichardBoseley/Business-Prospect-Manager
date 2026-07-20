@@ -58,6 +58,7 @@ function NavItem({
 }
 
 export function Sidebar() {
+  const { state } = useApp();
   return (
     <aside
       style={{
@@ -167,6 +168,15 @@ export function Sidebar() {
           <span style={{ fontSize: 11, color: "#6C757D" }}>
             Cranbourne West VIC · 2 venues
           </span>
+          {state.authEnabled && (
+            <a
+              href="/api/auth/logout"
+              className="go-dim"
+              style={{ fontSize: 11, fontWeight: 600, paddingTop: 4 }}
+            >
+              Sign out
+            </a>
+          )}
         </div>
       </div>
     </aside>
